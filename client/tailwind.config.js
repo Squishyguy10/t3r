@@ -7,6 +7,9 @@ module.exports = {
     fontFamily: {
       'display': ['Source Sans 3', 'Arial']
     },
+    backgroundImage: {
+      'nature-bg': "url('../public/naturebg.jpg')",
+    },
     extend: {},
   },
   plugins: [],

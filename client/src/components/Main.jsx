@@ -20,8 +20,12 @@ function Main() {
                             <h1 className='sm:text-4xl text-5xl font-medium title-font mb-4 text-green-400 py-3 font-display'>
                                 What is T3R? 
                             </h1>
-                            <p className='lg:w-2/3 mx-auto leading-relaxed text-base text-green-200'>
-                                T3R is an app that aims to make the world a more sustainable place. 
+                            <p className='lg:w-3/4 mx-auto leading-relaxed text-base text-green-200'>
+                                T3R is an app that aims to make the world a more sustainable place.
+                                Through the 3Rs principle of sustainability (reducing, reusing, and recycling),
+                                we implemented multiple innovative solutions to conserve ecological balance, via
+                                reducing food waste and recycling!
+                                
                             </p>
                         </div>
                     </div>

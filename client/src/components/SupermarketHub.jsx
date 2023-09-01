@@ -10,7 +10,7 @@ function SupermarketHub() {
             <div className='flex flex-col w-full mb-10'>
                 <ShoppingBagIcon className='mx-auto inline-block w-10 py-10' />
                 <h1 className='sm:text-4xl text-3xl font-medium title-font font-display'>
-                    Leaderboards
+                    Supermarket Program
                 </h1>
             </div>
 

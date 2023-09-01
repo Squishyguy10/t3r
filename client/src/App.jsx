@@ -4,6 +4,8 @@ import Main from './components/Main';
 import SupermarketHub from './components/SupermarketHub';
 import Login from './components/Login';
 import BottomBar from './components/BottomBar'
+import SupermarketSignup from './components/SupermarketSignup';
+import CustomerSignup from './components/CustomerSignup';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -30,6 +32,16 @@ function App() {
           <Route exact path='/login/customer'>
             <Login user='customer' />
           </Route>
+
+          <Route exact path='/signup/supermarket'>
+            <SupermarketSignup />
+          </Route>
+
+          <Route exact path='/signup/customer'>
+            <CustomerSignup />
+          </Route>
+
+          
 
         </Switch>
       </Router>

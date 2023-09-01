@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -11,6 +12,7 @@ class Login extends Component {
         }
 
         this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -23,37 +25,48 @@ class Login extends Component {
     }
 
     handleSubmit = (e) => {
-
+        alert(this.state.username + ' ' + this.state.password);
+        // Check with database here
     }
 
     render() {
         return (
             <div className='container px-5 mx-auto text-center lg:px-40'>
-                <form onSubmit={this.handleSubmit}>
-                    <div className='ml-3 mt-5 pb-56'>
-                        <header className='text-3xl font-display pb-10'>
-                            Login to your account here:
-                        </header>
 
-                        <div className='pb-4'>
-                            <input 
-                                className='bg-slate-200 hover:bg-slate-300 border border-black'
-                                placeholder='Username'
-                                style={{ textAlign: 'center' }}
-                                onChange={this.handleUsernameChange}
-                            />
-                        </div>  
-                        <div>
-                            <input 
-                                className='bg-slate-200 hover:bg-slate-300 border border-black'
-                                placeholder='Password'
-                                type='password'
-                                style={{ textAlign: 'center' }}
-                                onChange={this.handlePasswordChange}
-                            />
-                        </div>
+                <div className='ml-3 mt-5 pb-56'>
+                    <header className='text-3xl font-display pb-10'>
+                        Login to your account here:
+                    </header>
+
+                    <div className='pb-4'>
+                        <input 
+                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            placeholder='Username'
+                            style={{ textAlign: 'center' }}
+                            onChange={this.handleUsernameChange}
+                        />
+                    </div>  
+                    <div className='pb-4'>
+                        <input 
+                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            placeholder='Password'
+                            type='password'
+                            style={{ textAlign: 'center' }}
+                            onChange={this.handlePasswordChange}
+                        />
                     </div>
-                </form>
+                    <div className='space-x-1'>
+                        <Link to={'/signup/' + this.state.user}>
+                            <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
+                                Sign Up
+                            </button>
+                        </Link>
+                        <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
             </div>
         );
     }

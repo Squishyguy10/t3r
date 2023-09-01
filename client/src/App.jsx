@@ -7,6 +7,7 @@ import BottomBar from './components/BottomBar'
 import SupermarketSignup from './components/SupermarketSignup';
 import CustomerSignup from './components/CustomerSignup';
 import Map from './components/Map';
+import SupermarketCatalogue from './components/SupermarketCatalogue';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
 
           <Route exact path='/map'>
             <Map />
+          </Route>
+
+          <Route exact path='/catalogue/supermarket'>
+            <SupermarketCatalogue />
           </Route>
 
         </Switch>

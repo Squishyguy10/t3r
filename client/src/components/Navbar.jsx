@@ -3,7 +3,6 @@ import React from 'react';
 
 function NavBar() {
 
-
     return (
         <header className='bg-green-200 md:sticky top-0 z-10'>
             <div className='container flex flex-wrap p-2 flex-col md:flex-row items-center text-green-700'>

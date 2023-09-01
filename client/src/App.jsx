@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import Main from './components/Main';
 import SupermarketHub from './components/SupermarketHub';
 import Login from './components/Login';
+import BottomBar from './components/BottomBar'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         </Switch>
       </Router>
 
+      <BottomBar />
     </div>
   );
 }

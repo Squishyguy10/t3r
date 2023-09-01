@@ -19,7 +19,7 @@ function SupermarketHub() {
             {/*Buttons*/}
             <div className='pb-5'>
                 <Link to='/login/supermarket'>
-                    <button class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
+                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
                         Supermarket
                     </button>
                 </Link>
@@ -27,7 +27,7 @@ function SupermarketHub() {
 
             <div>
                 <Link to='/login/customer'>
-                    <button class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
+                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
                         Customer
                     </button>
                 </Link>

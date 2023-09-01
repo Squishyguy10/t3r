@@ -1,9 +1,10 @@
 import React from 'react';
 
+
 function Main() {
 
     return (
-        <div>
+        <div className="h-screen">
             
         </div>
     );

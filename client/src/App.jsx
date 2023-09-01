@@ -6,6 +6,7 @@ import Login from './components/Login';
 import BottomBar from './components/BottomBar'
 import SupermarketSignup from './components/SupermarketSignup';
 import CustomerSignup from './components/CustomerSignup';
+import Map from './components/Map';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
             <CustomerSignup />
           </Route>
 
-          
+          <Route exact path='/map'>
+            <Map />
+          </Route>
 
         </Switch>
       </Router>

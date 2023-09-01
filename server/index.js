@@ -9,13 +9,10 @@ const PORT = process.env.PORT || 3001;
 
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-// Define MongoDB schemas and models
+
 const supermarketSchema = new mongoose.Schema({
 	name: String,
-	location: {
-		type: { type: String, default: 'Point' },
-		coordinates: [Number, Number],
-	},
+	coordinates: [Number, Number],
 	inventory: [
 		{
 			name: String,
@@ -28,31 +25,73 @@ const supermarketSchema = new mongoose.Schema({
 });
 const Supermarket = mongoose.model('Supermarket', supermarketSchema);
 
+const userSchema = new mongoose.Schema({
+	email: String,
+	username: String,
+	password: String,
+	coordinates: [Number, Number],
+	type: String,
+});
+const User = mongoose.model('User', userSchema);
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
+app.post('/signup', (req, res) => {
+	const {email, username, password, coordinates, type, name} = req.body;
+
+	const newUser = new User({
+		username,
+		password, //hash for security at some point
+		email,
+		coordinates,
+		type,
+	});
+
+	newUser
+		.save()
+		.then(() => {
+			if (type === 'supermarket') {
+				const newSupermarket = new Supermarket({
+					name,
+					coordinates,
+					[],
+				});
+				return newSupermarket.save();
+			}
+		})
+		.then(() => {
+			res.status(201).json({message: `${username} (${type}) registered successfully`});
+		})
+		.catch((err) => {
+			console.error(`Error registering ${username} (${type}):`, err);
+			res.status(500).json({error: `Failed to register ${username} (${type})`});
+		});
+});
+
+
 app.post('/store/:storeId/add-inventory', (req, res) => {
-  //authentication stuff here
+	//authentication stuff here
 
-  const storeId = req.params.storeId;
-  const newItem = req.body.newItem;
+	const storeId = req.params.storeId;
+	const newItem = req.body.newItem;
 
-  Supermarket.findById(storeId)
-    .then((store) => {
-      if (!store) {
-        return res.status(404).json({ error: 'Store not found' });
-      }
-      store.inventory.push(newItem);
-      return store.save();
-    })
-    .then(() => {
-      res.status(201).json({message: 'Inventory added successfully'});
-    })
-    .catch((err) => {
-      console.error('Error adding inventory:', err);
-      res.status(500).json({error: 'Failed to add inventory'});
-    });
+	Supermarket.findById(storeId)
+		.then((store) => {
+			if (!store) {
+				return res.status(404).json({ error: 'Store not found' });
+			}
+			store.inventory.push(newItem);
+			return store.save();
+		})
+		.then(() => {
+			res.status(201).json({message: 'Inventory added successfully'});
+		})
+		.catch((err) => {
+			console.error('Error adding inventory:', err);
+			res.status(500).json({error: 'Failed to add inventory'});
+		});
 });
 
 

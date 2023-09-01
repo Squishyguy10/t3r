@@ -37,21 +37,22 @@ function Main() {
             </div>
 
             {/* What is T3R? */}
-            
-            <div id="about" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
-                <div id="fade-in-text" className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}> 
-                    <div className='flex flex-col w-full mb-40'>
-                        <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
-                        
-                        <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
-                            What is T3R? 
-                        </h1>
-                        <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
-                            T3R is an app that aims to make the world a more sustainable place.
-                            Through the 3Rs principle of sustainability (reducing, reusing, and recycling),
-                            we implemented multiple innovative solutions to conserve ecological balance, via
-                            reducing food waste and recycling!
-                        </p>
+            <div className="bg-vine-bg">
+                <div id="about" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+                    <div id="fade-in-text" className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}> 
+                        <div className='flex flex-col w-full mb-40'>
+                            <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
+                            
+                            <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
+                                What is T3R? 
+                            </h1>
+                            <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
+                                T3R is an app that aims to make the world a more sustainable place.
+                                Through the 3Rs principle of sustainability (reducing, reusing, and recycling),
+                                we implemented multiple innovative solutions to conserve ecological balance, via
+                                reducing food waste and recycling!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'display': ['Source Sans 3', 'Arial']
+      'display': ['Source Sans 3', 'Arial'],
+      'inter': ['Inter', 'sans-serif'],
     },
     backgroundImage: {
       'nature-bg': "url('../public/naturebg.jpg')",

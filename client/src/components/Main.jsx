@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpenIcon } from '@heroicons/react/24/outline';
 
 function Main() {
+    // fade in text
+    const [isVisible, setIsVisible] = useState(false);
+    
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const elementOffset = document.getElementById('fade-in-text').offsetTop;
+            
+            scrollTop > elementOffset-windowHeight ? setIsVisible(true) : setIsVisible(false);
+            console.log(isVisible);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <div className='h-screen bg-nature-bg'>
@@ -13,20 +29,21 @@ function Main() {
 
 
                     {/* What is T3R? */}
-                    <div className='container px-5 pt-40 mx-auto text-center lg:px-40'>
-                        <div className='flex flex-col w-full mb-40 '>
-                            <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-200' />
-                            
-                            <h1 className='sm:text-4xl text-5xl font-medium title-font mb-4 text-green-400 py-3 font-display'>
-                                What is T3R? 
-                            </h1>
-                            <p className='lg:w-3/4 mx-auto leading-relaxed text-base text-green-200'>
-                                T3R is an app that aims to make the world a more sustainable place.
-                                Through the 3Rs principle of sustainability (reducing, reusing, and recycling),
-                                we implemented multiple innovative solutions to conserve ecological balance, via
-                                reducing food waste and recycling!
+                    <div className='container px-5 pt-40 mx-auto text-center lg:px-40 pb-80'>
+                        <div id="fade-in-text" className={`${isVisible ? 'opacity-100 transition-opacity duration-1000' : 'opacity-0'}`}> 
+                            <div className='flex flex-col w-full mb-40'>
+                                <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-200' />
                                 
-                            </p>
+                                <h1 className='sm:text-4xl text-5xl font-medium title-font mb-4 text-green-400 py-3 font-display'>
+                                    What is T3R? 
+                                </h1>
+                                <p className='lg:w-3/4 mx-auto leading-relaxed text-base text-green-200'>
+                                    T3R is an app that aims to make the world a more sustainable place.
+                                    Through the 3Rs principle of sustainability (reducing, reusing, and recycling),
+                                    we implemented multiple innovative solutions to conserve ecological balance, via
+                                    reducing food waste and recycling!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
 const supermarketSchema = new mongoose.Schema({
+	username: String,
 	name: String,
 	coordinates: [Number, Number],
 	inventory: [
@@ -40,13 +41,19 @@ const cors = require('cors');
 app.use(cors());
 
 
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
 	const {email, username, password, coordinates, type, name} = req.body;
-
+	
+	const existingUser = await User.findOne({$or: [{username}, {email}]});
+	
+	if (existingUser) {
+		return res.status(400).json({error: 'Username or email already has an account'});
+	}
+	
 	const newUser = new User({
+		email,
 		username,
 		password, //hash for security at some point
-		email,
 		coordinates,
 		type,
 	});
@@ -57,6 +64,7 @@ app.post('/signup', (req, res) => {
 			if (type === 'supermarket') {
 				let inventory = [];
 				const newSupermarket = new Supermarket({
+					username,
 					name,
 					coordinates,
 					inventory,
@@ -94,8 +102,6 @@ app.post('/signin', (req, res) => {
 
 
 app.post('/store/:storeId/add-inventory', (req, res) => {
-	//authentication stuff here
-
 	const storeId = req.params.storeId;
 	const newItem = req.body.newItem;
 

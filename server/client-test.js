@@ -11,19 +11,27 @@ if (mode == "up") {
 	const user = {email, username, password, coordinates, type, name};
 
 	fetch('http://localhost:3001/signup', {
-	method: 'POST',
-	headers: {
+		method: 'POST',
+		headers: {
 		'Content-Type': 'application/json',
-	},
-	body: JSON.stringify(user),
+		},
+		body: JSON.stringify(user),
 	})
-	.then((response) => response.json())
-	.then((data) => {
-		console.log(data.message);
-	})
-	.catch((error) => {
+		.then((response) => response.json())
+		.then((data) => {
+		if (data.error) {
+			console.error('Error during sign-up:', data.error);
+			// Display the error message to the user
+			alert(data.error);
+		} else {
+			console.log('Sign-Up Response:', data.message);
+			// Handle successful sign-up here
+		}
+		})
+		.catch((error) => {
 		console.error('Error during sign-up:', error);
-	});
+		// Handle network or other errors here
+		});
 }
 
 

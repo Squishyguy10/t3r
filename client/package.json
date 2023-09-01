@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@material-tailwind/html": "^2.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

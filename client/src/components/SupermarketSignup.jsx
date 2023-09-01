@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng,
+} from 'react-places-autocomplete';
 import { Link } from 'react-router-dom';
+import { loadGoogleMapsAPI } from './google-maps-api';
+import Key from './google-maps-api-key';
+
 
 class SupermarketSignup extends Component {
 
@@ -9,22 +16,47 @@ class SupermarketSignup extends Component {
         this.state = {
             email: '',
             company: '',
+            store: '',
             password: '',
             confirm_password: '',
             phone: '',
             city: '',
+            googleMaps: null,
+            location: null,
+            place: '',
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
         this.handleCompanyChange = this.handleCompanyChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePlaceChange = this.handlePlaceChange.bind(this);
+    }
+
+    componentDidMount() {
+
+        loadGoogleMapsAPI(Key())
+        .then((maps) => {
+            this.setState({ googleMaps: maps });
+        })
+        .catch((error) => {
+            console.error('Error loading Google Maps API:', error);
+        });
+    }
+
+    handlePlaceChange = (e) => {
+        this.setState({place: e.target.value});
     }
 
     handleEmailChange = (e) => {
         this.setState({email: e.target.value});
+    }
+
+    handleStoreChange = (e) => {
+        this.setState({store: e.target.value});
     }
 
     handlePhoneChange = (e) => {
@@ -50,14 +82,30 @@ class SupermarketSignup extends Component {
         this.setState({confirm_password: e.target.value});
     }
 
+    
+
+    handleSelect = async (selectedAddress) => {
+        try {
+            const results = await geocodeByAddress(selectedAddress);
+            const latLng = await getLatLng(results[0]);
+            this.setState({location: latLng});
+            this.setState({place: selectedAddress});
+            console.log('Selected location:', latLng);
+        } 
+        catch (error) {
+            console.error('Error selecting location:', error);
+        }
+    };
+
 
     handleSubmit = (e) => {
-        alert(this.state.username + ' ' + this.state.password);
+        alert(this.state.company + ' ' + this.state.password);
         // Add to database
         // handle everything else 
     }
 
     render() {
+        const { googleMaps } = this.state;
         return (
             <div className='container px-5 mx-auto text-center lg:px-40'>
 
@@ -94,7 +142,16 @@ class SupermarketSignup extends Component {
                             style={{ textAlign: 'center' }}
                             onChange={this.handleCompanyChange}
                         />
-                    </div>  
+                    </div>
+                    <div className='pb-4'>
+                        <input 
+                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            placeholder='Store'
+                            size='40'
+                            style={{ textAlign: 'center' }}
+                            onChange={this.handleStoreChange}
+                        />
+                    </div> 
                     <div className='pb-4'>
                         <input 
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
@@ -114,6 +171,48 @@ class SupermarketSignup extends Component {
                             style={{ textAlign: 'center' }}
                             onChange={this.handleConfirmPasswordChange}
                         />
+                    </div>
+                    <div>
+                        {googleMaps && 
+                            <div>
+                                <PlacesAutocomplete
+                                value={this.state.place}
+                                onChange={(newPlace) => {this.setState({place: newPlace})}} 
+                                onSelect={this.handleSelect}
+                                >
+                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                        <div>
+                                            <input
+                                                {...getInputProps({
+                                                type: 'search',
+                                                placeholder: 'Location',
+                                                className: 'bg-slate-200 hover:bg-slate-300 border border-black text-center mb-4',
+                                                size: '40',
+                                                })}
+                                            />
+                                            <div>
+                                                {loading ? <div>Loading...</div> : null}
+                                                {suggestions.map((suggestion) => {
+                                                const className = suggestion.active
+                                                    ? 'suggestion-item--active'
+                                                    : 'suggestion-item';
+                                                return (
+                                                    <div
+                                                    {...getSuggestionItemProps(suggestion, {
+                                                        className,
+                                                    })}
+                                                    >
+                                                    {suggestion.description}
+                                                    </div>
+                                                );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+                                </PlacesAutocomplete>
+                            </div>
+                        }
+                        <pre>{JSON.stringify(this.state.location)}</pre>
                     </div>
                     <div className='space-x-3'>
                         <Link to={'/login/customer'}>

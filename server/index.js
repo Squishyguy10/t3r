@@ -36,6 +36,8 @@ const User = mongoose.model('User', userSchema);
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const cors = require('cors');
+app.use(cors());
 
 
 app.post('/signup', (req, res) => {
@@ -73,6 +75,7 @@ app.post('/signup', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
+	console.log(req);
 	const {username, password, type} = req.body;
 
 	User.findOne({username, password, type})

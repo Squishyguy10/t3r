@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar';
 import Main from './components/Main';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       
-      <Navbar />
+      <NavBar />
 
       <Router>
         <Switch>

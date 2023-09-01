@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar';
 import Main from './components/Main';
 import Button from './components/Button';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';

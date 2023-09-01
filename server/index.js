@@ -32,6 +32,30 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
+app.post('/store/:storeId/add-inventory', (req, res) => {
+  //authentication stuff here
+
+  const storeId = req.params.storeId;
+  const newItem = req.body.newItem;
+
+  Supermarket.findById(storeId)
+    .then((store) => {
+      if (!store) {
+        return res.status(404).json({ error: 'Store not found' });
+      }
+      store.inventory.push(newItem);
+      return store.save();
+    })
+    .then(() => {
+      res.status(201).json({message: 'Inventory added successfully'});
+    })
+    .catch((err) => {
+      console.error('Error adding inventory:', err);
+      res.status(500).json({error: 'Failed to add inventory'});
+    });
+});
+
+
 app.get('/store/:storeId/inventory', (req, res) => {
 	// JWT secure stuff maybe later
 

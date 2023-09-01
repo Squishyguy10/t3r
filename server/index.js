@@ -53,10 +53,11 @@ app.post('/signup', (req, res) => {
 		.save()
 		.then(() => {
 			if (type === 'supermarket') {
+				let inventory = [];
 				const newSupermarket = new Supermarket({
 					name,
 					coordinates,
-					[],
+					inventory,
 				});
 				return newSupermarket.save();
 			}
@@ -69,6 +70,24 @@ app.post('/signup', (req, res) => {
 			res.status(500).json({error: `Failed to register ${username} (${type})`});
 		});
 });
+
+
+app.post('/signin', (req, res) => {
+	const {username, password, type} = req.body;
+
+	User.findOne({username, password, type})
+		.then((user) => {
+			if (!user) {
+				return res.status(401).json({error: 'Invalid credentials'});
+			}
+			res.status(200).json({message: `${username} (${type}) signed in successfully`});
+		})
+		.catch((err) => {
+			console.error(`Error signing in ${username} (${type}):`, err);
+			res.status(500).json({error: `Failed to sign in ${username} (${type})`});
+		});
+});
+
 
 
 app.post('/store/:storeId/add-inventory', (req, res) => {

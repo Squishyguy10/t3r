@@ -5,26 +5,9 @@ class CustomerCatalogue extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [
-                {
-                    store: 'Walmart',
-                    name: 'Banana',
-                    price: 25,
-                    expiry: 3,
-                    image: 'basgoong',
-                    quantity: 10,
-                },
-                {
-                    store: 'Basgoong',
-                    name: 'Laymin HK',
-                    price: 15,
-                    expiry: 10,
-                    image: 'jask',
-                    quantity: 50,
-                },
-            ],
+            products: [],
             selectedStore: '',
-            stores: ['Walmart', 'Basgoong'],
+            stores: [],
             searchQuery: '',
             cart: [],
             quantitySelected: {},
@@ -37,7 +20,44 @@ class CustomerCatalogue extends Component {
 
         this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this);
+		
+		
+		if (!CustomerCatalogue.executeSecond) {
+			CustomerCatalogue.executeSecond = true;
+		}
+		else if (CustomerCatalogue.executeSecond) {
+			fetch('http://localhost:3001/supermarkets')
+			.then((response) => response.json())
+			.then((supermarkets) => {
+				const storeNames = [];
+				const itemDetails = [];
+
+				supermarkets.forEach((supermarket) => {
+					const storeName = supermarket.name;
+					storeNames.push(storeName);
+
+					supermarket.inventory.forEach((item) => {
+						itemDetails.push({
+							store: storeName,
+							name: item.name,
+							price: item.price,
+							expiry: item.expiry,
+							quantity: item.quantity,
+						});
+					});
+				});
+				console.log('Store Names:', storeNames);
+				this.setState({stores: storeNames});
+				console.log('Item Details:', itemDetails);
+				this.setState({products: itemDetails});
+			})
+			.catch((error) => {
+				console.error('Error retrieving supermarkets:', error);
+			});
+		}
     }
+
+
 
     handleStoreChange = (event) => {
         this.setState({ selectedStore: event.target.value });
@@ -157,7 +177,7 @@ class CustomerCatalogue extends Component {
                             <tr className='text-xl'>
                                 <th>Store</th>
                                 <th>Item</th>
-                                <th>Expires in</th>
+                                <th>Expires</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Add to Cart</th>
@@ -171,8 +191,22 @@ class CustomerCatalogue extends Component {
                                     <td>{product.store}</td>
                                     <td>{product.name}</td>
                                     <td>
-                                        {product.expiry} {product.expiry === 1 ? 'day' : 'days'}
-                                    </td>
+										{(() => {
+										const expiryDate = new Date(product.expiry);
+										const currentDate = new Date();
+
+										const timeDifference = expiryDate - currentDate;
+										const daysDifference = Math.floor(timeDifference / (1000*60*60*24));
+
+										if (daysDifference > 0) {
+											return `In ${daysDifference} ${daysDifference === 1 ? 'day' : 'days'}`;
+										} else if (daysDifference < 0) {
+											return `${-daysDifference} ${-daysDifference === 1 ? 'day' : 'days'} ago`;
+										} else {
+											return 'Today';
+										}
+										})()}
+									</td>
                                     <td>${product.price}</td>
                                     <td>{product.quantity}</td>
                                     <td>

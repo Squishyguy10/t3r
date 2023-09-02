@@ -56,7 +56,7 @@ class Login extends Component {
                         />
                     </div>
                     <div className='space-x-1'>
-                        <Link to={'/signup/' + this.state}>
+                        <Link to={'/signup/' + this.state.type}>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
                                 Sign Up
                             </button>

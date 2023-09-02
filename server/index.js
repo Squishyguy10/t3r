@@ -13,7 +13,7 @@ mongoose.set('strictQuery', false);
 const supermarketSchema = new mongoose.Schema({
 	username: String,
 	name: String,
-	coordinates: [Number, Number],
+	coordinates: {lat: Number, lng: Number},
 	inventory: [
 		{
 			name: String,
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 	email: String,
 	username: String,
 	password: String,
-	coordinates: [Number, Number],
+	coordinates: {lat: Number, lng: Number},
 	type: String,
 });
 const User = mongoose.model('User', userSchema);
@@ -42,7 +42,9 @@ app.use(cors());
 
 
 app.post('/signup', async (req, res) => {
-	const {email, username, password, coordinates, type, name} = req.body;
+	console.log(req.body);
+	const [email, username, password, coordinates, type, name] = req.body;
+	console.log(email);
 	
 	const existingUser = await User.findOne({$or: [{username}, {email}]});
 	
@@ -100,15 +102,14 @@ app.post('/signin', (req, res) => {
 });
 
 
-
-app.post('/store/:storeId/add-inventory', (req, res) => {
-	const storeId = req.params.storeId;
+app.post('/add-inventory/:username', (req, res) => {
+	const {username} = req.params;
 	const newItem = req.body.newItem;
 
-	Supermarket.findById(storeId)
+	Supermarket.findOne({username})
 		.then((store) => {
 			if (!store) {
-				return res.status(404).json({ error: 'Store not found' });
+				return res.status(404).json({error: 'Store not found'});
 			}
 			store.inventory.push(newItem);
 			return store.save();
@@ -123,46 +124,14 @@ app.post('/store/:storeId/add-inventory', (req, res) => {
 });
 
 
-app.get('/store/:storeId/inventory', (req, res) => {
-	// JWT secure stuff maybe later
-
-	const storeId = req.params.storeId;
-
-	Supermarket.findById(storeId)
-		.then((store) => {
-			if (!store) {
-				return res.status(404).json({error: 'Store not found'});
-			}
-			res.status(200).json(store.inventory);
-		})
-		.catch((err) => {
-			console.error('Error retrieving store inventory:', err);
-			res.status(500).json({error: 'Failed to retrieve store inventory'});
-		});
-});
-
-
-app.get('/items/:itemName', (req, res) => {
-	const itemName = req.params.itemName;
-
-	Supermarket.find({'inventory.name': itemName})
+app.get('/supermarkets', (req, res) => {
+	Supermarket.find()
 		.then((supermarkets) => {
-			if (supermarkets.length === 0) {
-				return res.status(404).json({error: 'Item not found at any store'});
-			}
-			const result = supermarkets.map((supermarket) => {
-				const item = supermarket.inventory.find((i) => i.name === itemName);
-				return {
-					supermarketName: supermarket.name,
-					location: supermarket.location,
-					quantity: item.quantity,
-				};
-			});
-			res.status(200).json(result);
+			res.status(200).json(supermarkets);
 		})
 		.catch((err) => {
-			console.error('Error retrieving item data:', err);
-			res.status(500).json({error: 'Failed to retrieve item data'});
+			console.error('Error retrieving supermarkets data:', err);
+			res.status(500).json({error: 'Failed to retrieve supermarkets data'});
 		});
 });
 

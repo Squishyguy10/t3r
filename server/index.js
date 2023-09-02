@@ -6,6 +6,10 @@ const uuid = require('uuid');
 const dotenv = require('dotenv');
 dotenv.config();
 const uri = process.env.URI;
+if (!uri) {
+	console.log("The MongoDB Atlas URI is missing from the environment variables. Add URI=your uri here to the .env file on an empty line.");
+	process.exit();
+}
 
 const PORT = process.env.PORT || 3001;
 
@@ -43,6 +47,10 @@ app.use(cors());
 
 const OpenAI = require('openai');
 const OpenAIKey = process.env.OPENAIKEY;
+if (!OpenAIKey) {
+	console.error("The OpenAI key is missing from the environment variables. Add OPENAI_API_KEY=your key here to the .env file on an empty line.");
+	process.exit();
+}
 
 const fs = require('fs');
 const jsonString = fs.readFileSync("survey.json", "utf-8");
@@ -156,7 +164,7 @@ app.post('/submit_survey', (req, res) => {
 
 async function aiGenResults(response) {
 	try {
-		const oaiRequest = new OpenAI({ apiKey: gee, dangerouslyAllowBrowser: true });
+		const oaiRequest = new OpenAI({ apiKey: OpenAIKey, dangerouslyAllowBrowser: true });
 		const response = await oaiRequest.chat.completions.create({
 			model: 'gpt-3.5-turbo',
 			messages: [{'role': 'user', 'content': 'Write a few sentences to tell me eloquently how to improve my lifestyle to be more sustainable if I drive every day, and I always buy new clothes and I don\'t do anything with the old ones'}],
@@ -199,10 +207,8 @@ app.post('/get_survey_results', (req, res) => {
 			formattedResponse += "Question: " + formattedQuestion + "\n";
 			formattedResponse += "Answer: " + formattedAnswer + "\n\n";
 		}
-		console.log(formattedResponse);
 		
-		const result = "Based on your survey responses, you should try to suberman.";
-		
+		const result = aiGenResults(formattedResponse);
 		if (result) {
 			res.json({success: true, result});
 		}

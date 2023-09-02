@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function AccountPortalSupermarket() {
 
-    let username = 'Laymin HK'; // get the username from the local storage
+    let username = localStorage.getItem("username");
 
     return (
         <div className='container px-5 mx-auto text-center lg:px-40'>

@@ -1,57 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import OpenaiKey from './openai-api-key';
+import OpenAI from 'openai'; // Make sure to install the 'openai' library
 
-const key = 'gaJGz4L6d7qtCcT4E404L0zi7sX9QNWL';
+function Map() {
+    const [completion, setCompletion] = useState('');
 
+    const [isLoading, setIsLoading] = useState(false); // To track loading state
 
-class Map extends Component {
+    const handleGenerateText = async () => {
+        setIsLoading(true); // Set loading state to true while waiting for API response
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            mapData: null,
-        };
-    }
-
-    async componentDidMount() {
         try {
-            const mapData = await this.GetMap();
-            this.setState({ mapData });
-        }
-        catch (error) {
-            console.error('Error fetching map data:', error);
-        }
-    }
+            const gee = OpenaiKey; // Replace 'YOUR_API_KEY' with your actual OpenAI API key
+            const openai = new OpenAI({ apiKey: gee, dangerouslyAllowBrowser: true });
+            const response = await openai.completions.create({
+                model: 'text-davinci-003', // You can use the engine of your choice
+                prompt: 'Say hello world',
+                max_tokens: 50, // Adjust as needed
+            });
 
-    async GetMap() {
-        return await fetch(`https://www.mapquestapi.com/search/v2/radius?key=${key}&maxMatches=4&origin=39.750307,-104.999472`, {
-            method: 'GET',
-        })
-        .then((response) => response.json())
-        .then((response) =>  {
-            console.log(response);
-            return response;
-        });
-    }
-    
-    render() {
-        const { mapData } = this.state;
-        return (
-            <div>
-                {mapData ? (
-                    <div>
-                        {mapData.searchResults.map(result => (
-                            <h1>
-                                {result.name}
-                            </h1>
-                        ))}
-                    </div>
-                ) : (
-                    <p>Farting...</p>
-                )}
-            </div>
-        );
-    }
+            setCompletion(response.choices[0].text);
+        } catch (error) {
+            console.error('Error fetching completion:', error);
+            setCompletion('Error occurred while generating text.');
+        } finally {
+            setIsLoading(false); // Set loading state back to false when the API call is complete
+        }
+    };
 
+    return (
+        <div>
+            <h1>GPT-3 Text Completion</h1>
+            <p>Original Prompt: "Say hello world"</p>
+            <button onClick={handleGenerateText} disabled={isLoading}>
+                Generate Text
+            </button>
+            {isLoading && <p>Loading...</p>}
+            <h2>Generated Text:</h2>
+            <p>{completion}</p>
+        </div>
+    );
 }
 
 export default Map;

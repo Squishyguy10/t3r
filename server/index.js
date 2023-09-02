@@ -45,13 +45,8 @@ const OpenAI = require('openai');
 const OpenAIKey = process.env.OPENAIKEY;
 
 const fs = require('fs');
-try {
-	const jsonString = fs.readFileSync("survey.json", "utf-8");
-	const surveyJSON = JSON.parse(jsonString);
-}
-catch (err) {
-	console.error('Error reading or parsing survey.json:', err);
-}
+const jsonString = fs.readFileSync("survey.json", "utf-8");
+const surveyJSON = JSON.parse(jsonString);
 
 
 app.post('/signup', async (req, res) => {
@@ -178,15 +173,45 @@ app.post('/get_survey_results', (req, res) => {
 	const user_id = req.body.uuid;
 	const response = surveyResponses[user_id];
 	
-	const result = "Based on your survery responses, you should try to suberman.";
-	
-	if (result) {
-		res.json({success: true, result});
-	}
-	else {
+	if (!response) {
 		res.status(404).json({error: 'User not found'});
 	}
+	else {
+		let formattedResponse = "Write a few sentences (just one paragraph) to tell me eloquently how to improve my lifestyle to be more sustainable and also what I'm doing well based on my answers in the Q/A below:\n";
+		for (const [question, answer] of Object.entries(response)) {
+			let formattedQuestion = surveyJSON[question].title;
+			let formattedAnswer = "";
+			if ("choices" in surveyJSON[question]) {
+				if (Array.isArray(answer)) {
+					const formattedAnswerArray = []
+					for (const index of answer) {
+						formattedAnswerArray.push(surveyJSON[question].choices[index]);
+					}
+					formattedAnswer = formattedAnswerArray.join(", ");
+				}
+				else {
+					formattedAnswer = surveyJSON[question].choices[answer]
+				}
+			}
+			else {
+				formattedAnswer = typeof answer === 'boolean' ? (answer ? 'Yes' : 'No') : answer;
+			}
+			formattedResponse += "Question: " + formattedQuestion + "\n";
+			formattedResponse += "Answer: " + formattedAnswer + "\n\n";
+		}
+		console.log(formattedResponse);
+		
+		const result = "Based on your survey responses, you should try to suberman.";
+		
+		if (result) {
+			res.json({success: true, result});
+		}
+		else {
+			res.status(500).json({error: 'Failed to generate recommendations'});
+		}
+	}
 });
+
 
 
 const start = async() => {

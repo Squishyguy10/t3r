@@ -116,9 +116,9 @@ class CustomerCatalogue extends Component {
 		}));
 	};
 
-	removeItemFromCart = (product) => {
+	removeItemFromCart = (index) => {
 		const { cart } = this.state;
-		const updatedCart = cart.filter((item) => item.name !== product.name);
+		const updatedCart = cart.filter((item) => item.index !== index);
 		this.setState({
 			cart: updatedCart,
 		});
@@ -235,7 +235,7 @@ class CustomerCatalogue extends Component {
 									</td>
 									<td>
 										<button
-											onClick={() => this.removeItemFromCart(product)}
+											onClick={() => this.removeItemFromCart(product.index)}
 											className='bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded'
 										>
 											Remove

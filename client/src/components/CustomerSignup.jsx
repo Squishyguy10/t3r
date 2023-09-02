@@ -223,15 +223,12 @@ class CustomerSignup extends Component {
                                 </div>
                             }
                         </div>
-                        <div className='space-x-5'>
+                        <button className='border w-full my-5 py-2 bg-blue-500 hover:bg-blue-700 text-white' onClick={this.handleSubmit}>Submit</button>
+                        
+                        <div className='flex justify-end'>
                             <Link to={'/login/customer'}>
-                                <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
-                                    Go Back
-                                </button>
+                                <p className='text-blue-500 underline'> Back</p>
                             </Link>
-                            <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>
-                                Submit
-                            </button>
                         </div>
                     </div>
                 </div>

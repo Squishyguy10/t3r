@@ -9,8 +9,6 @@ Our app consists of two main components. We have the *Supermarket Program* & the
 
 ***
 
-<br><br>
-
 ### Supermarket Program :shopping_cart:
 
 The idea of the supermarket program is to tackle food waste. As supermarkets end up with a lot of excess food, especially produce, at the end of every day, they eventually have to throw it out as the supply exceeds the demand and the food eventually goes bad. Our app allows supermarkets to register an account and list items for sale on the app. When registering, supermarkets have to provide the company name, store name, username, password, email address, telephone number, and their location. Similarily, customers are able to register accounts, with all of the same information save for company and store names. Supermarkets are allowed to list items for sale, by putting the item names, quantity, expirity date, and price. These items are then displayed onto the item catalogue, where customers are allowed to add to their cart and proceed with their orders.

@@ -10,7 +10,7 @@ class SupermarketSignup extends Component {
 
         this.state = {
             email: '',
-            company: '',
+            username: '',
             store: '',
             password: '',
             confirm_password: '',
@@ -22,9 +22,9 @@ class SupermarketSignup extends Component {
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleStoreChange = this.handleStoreChange.bind(this);
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
-        this.handleCompanyChange = this.handleCompanyChange.bind(this);
+        this.handleStoreChange = this.handleStoreChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,8 +49,8 @@ class SupermarketSignup extends Component {
         this.setState({email: e.target.value});
     }
 
-    handleStoreChange = (e) => {
-        this.setState({store: e.target.value});
+    handleUsernameChange = (e) => {
+        this.setState({username: e.target.value});
     }
 
     handlePhoneChange = (e) => {
@@ -62,8 +62,8 @@ class SupermarketSignup extends Component {
         this.setState({phone: formattedPhone});
     }
 
-    handleCompanyChange = (e) => {
-        this.setState({company: e.target.value});
+    handleStoreChange = (e) => {
+        this.setState({store: e.target.value});
     }
 
     handlePasswordChange = (e) => {
@@ -90,7 +90,7 @@ class SupermarketSignup extends Component {
 
 
     handleSubmit = (e) => {
-        alert(this.state.company + ' ' + this.state.password);
+        alert(this.state.username + ' ' + this.state.password);
         // Add to database
         // handle everything else 
     }
@@ -127,19 +127,19 @@ class SupermarketSignup extends Component {
                     <div className='pb-4'>
                         <input 
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Company'
+                            placeholder='Store Name'
                             size='40'
                             style={{ textAlign: 'center' }}
-                            onChange={this.handleCompanyChange}
+                            onChange={this.handleStoreChange}
                         />
                     </div>
                     <div className='pb-4'>
                         <input 
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Store'
+                            placeholder='Username'
                             size='40'
                             style={{ textAlign: 'center' }}
-                            onChange={this.handleStoreChange}
+                            onChange={this.handleUsernameChange}
                         />
                     </div> 
                     <div className='pb-4'>

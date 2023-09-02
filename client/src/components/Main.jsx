@@ -19,7 +19,7 @@ function Main() {
     return (
         <div>
             <div className='h-screen bg-nature-bg'>
-                <div className='h-screen opacity-90 bg-black/50'>
+                <div className='h-screen bg-black/50'>
                     <div className='opacity-100 container px-5 pt-24 pb-10 mx-auto text-center lg:px-40'>
                         <h1 className='text-8xl pb-10 font-display text-green-400 font-bold'>
                             THE 3 R'S

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SupermarketCatalogue extends Component {
     constructor(props) {
@@ -83,12 +84,18 @@ class SupermarketCatalogue extends Component {
                         onChange={this.handleSearchChange}
                     />
                 </div>
+                <div>
+                    <Link to='/add-item'>
+                        <button className='bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 border border-slate-700 rounded'>
+                            Add Item
+                        </button>
+                    </Link>
+                </div>
                 <div className='flex justify-center'>
                     <table cellPadding='50'>
                         <thead>
                             <tr className='text-xl'>
                                 <th>Store</th>
-                                <th>Image (REMOVE THIS)</th>
                                 <th>Item</th>
                                 <th>Expires in</th>
                                 <th>Price</th>
@@ -99,7 +106,6 @@ class SupermarketCatalogue extends Component {
                             <tbody className='text-lg' key={index}>
                                 <tr className='border-t-2 border-solid border-black'>
                                     <td>{product.store}</td>
-                                    <td></td>
                                     <td>{product.name}</td>
                                     <td>
                                         {product.expiry} {product.expiry === 1 ? 'day' : 'days'}

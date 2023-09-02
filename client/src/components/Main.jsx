@@ -28,7 +28,7 @@ function Main() {
             <div className="bg-vine-bg">
                 <div id="about-t3r" className='container px-5 pt-28 mx-auto text-center lg:px-40 pb-80'>
                     <FadeInText>
-                        <div className='flex flex-col w-full mb-40'>
+                        <div className='flex flex-col w-full mb-40 pt-3'>
                             <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
                             <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
                                 What is T3R? 
@@ -51,7 +51,7 @@ function Main() {
 
             <div id="our-supermarket-program" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>
-                    <div className='flex flex-col w-full mb-40'>
+                    <div className='flex flex-col w-full mb-40 pt-1'>
                         <ShoppingCartIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
                         <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
                             Our Supermarket Program

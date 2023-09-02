@@ -6,7 +6,7 @@ const FadeInText = ({ children }) => {
     useEffect(() => {
         const handleScroll = () => {
             const textOffset = document.getElementById('fade-in-text').offsetTop;
-            window.scrollY > textOffset-window.innerHeight+200 ? setIsVisible(true) : setIsVisible(false);
+            window.scrollY > textOffset-window.innerHeight+500 ? setIsVisible(true) : setIsVisible(false);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);

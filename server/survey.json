@@ -1,0 +1,254 @@
+[
+	{
+		"name": "question1",
+		"title": "How often do you drive?",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "Never"
+			},
+			{
+				"value": 1,
+				"text": "A few times per year"
+			},
+			{
+				"value": 2,
+				"text": "A few times per month"
+			},
+			{
+				"value": 3,
+				"text": "A few times per week"
+			},
+			{
+				"value": 4,
+				"text": "Every day"
+			}
+		]
+	},
+	{
+		"name": "question2",
+		"title": "Where do you drive to?",
+		"choices": [
+			{
+				"value": 0,
+				"text": "Work"
+			},
+			{
+				"value": 1,
+				"text": "School"
+			},
+			{
+				"value": 2,
+				"text": "Errands"
+			},
+			{
+				"value": 3,
+				"text": "Friends' Homes"
+			},
+			{
+				"value": 4,
+				"text": "Appointments"
+			},
+			{
+				"value": 5,
+				"text": "Stores"
+			}
+		]
+	},
+	{
+		"name": "question3",
+		"title": "How much fuel does your car use? (in L/100km)"
+	},
+	{
+		"name": "question4",
+		"title": "What energy is your home mostly powered by?",
+		"choices": [
+			{
+				"value": 0,
+				"text": "Natural Gas"
+			},
+			{
+				"value": 1,
+				"text": "Grid Electricity"
+			},
+			{
+				"value": 2,
+				"text": "Oil"
+			},
+			{
+				"value": 3,
+				"text": "Propane"
+			},
+			{
+				"value": 4,
+				"text": "Solar Electricity"
+			}
+		]
+	},
+	{
+		"name": "question14",
+		"title": "Is your home insulated well?"
+	},
+	{
+		"name": "question9",
+		"title": "Are your appliances energy efficient? (such as being Energy Star rated)",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "No"
+			},
+			{
+				"value": 1,
+				"text": "Some of them"
+			},
+			{
+				"value": 2,
+				"text": "Most of them"
+			},
+			{
+				"value": 3,
+				"text": "All of them"
+			}
+		]
+	},
+	{
+		"name": "question5",
+		"title": "Do you recycle recyclable products?",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "No"
+			},
+			{
+				"value": 1,
+				"text": "Sometimes"
+			},
+			{
+				"value": 2,
+				"text": "Yes"
+			}
+		]
+	},
+	{
+		"name": "question6",
+		"title": "Do you compost organic waste?",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "No"
+			},
+			{
+				"value": 1,
+				"text": "Sometimes"
+			},
+			{
+				"value": 2,
+				"text": "Yes"
+			}
+		]
+	},
+	{
+		"name": "question7",
+		"title": "Around how much of your diet is locally grown/produced food?",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "0%"
+			},
+			{
+				"value": 1,
+				"text": "1-25%"
+			},
+			{
+				"value": 2,
+				"text": "26-50%"
+			},
+			{
+				"value": 3,
+				"text": "51-75%"
+			},
+			{
+				"value": 4,
+				"text": "75-100%"
+			}
+		]
+	},
+	{
+		"name": "question8",
+		"title": "Around how often do you buy new clothing?",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "Annually or longer"
+			},
+			{
+				"value": 1,
+				"text": "Semi-Annually"
+			},
+			{
+				"value": 2,
+				"text": "Monthly"
+			},
+			{
+				"value": 3,
+				"text": "Weekly"
+			},
+			{
+				"value": 4,
+				"text": "Daily"
+			}
+		]
+	},
+	{
+		"name": "question10",
+		"title": "What do you do with your old clothes?"
+	},
+	{
+		"name": "question11",
+		"title": "Around how often do you upgrade your electronics? (for example buying a new phone)",
+		"rateValues": [
+			{
+				"value": 0,
+				"text": "Quadrennially"
+			},
+			{
+				"value": 1,
+				"text": "Bi-annually"
+			},
+			{
+				"value": 2,
+				"text": "Annually"
+			},
+			{
+				"value": 3,
+				"text": "Semi-annually"
+			}
+		]
+	},
+	{
+		"name": "question12",
+		"title": "What do you with your old electronics?"
+	},
+	{
+		"name": "question13",
+		"title": "Do you ever buy used clothing or electronics?"
+	},
+	{
+		"name": "question15",
+		"title": "What bottle do you drink water from the most?",
+		"choices": [
+			{
+				"value": 0,
+				"text": "Disposable Plastic Bottled Water"
+			},
+			{
+				"value": 1,
+				"text": "Reusing Disposable Bottles"
+			},
+			{
+				"value": 2,
+				"text": "Reusable Water Bottles"
+			}
+		]
+	}
+]

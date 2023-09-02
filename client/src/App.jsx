@@ -13,6 +13,7 @@ import AccountPortalSupermarket from './components/AccountPortalSupermarket';
 import AccountPortalCustomer from './components/AccountPortalCustomer';
 import CustomerCatalogue from './components/CustomerCatalogue';
 import AddItems from './components/AddItems';
+import PostPurchase from './components/PostPurchase';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -75,6 +76,10 @@ function App() {
 
           <Route exact path='/add-item'>
             <AddItems />
+          </Route>
+
+          <Route exact path='/post-purchase'>
+            <PostPurchase />
           </Route>
 
         </Switch>

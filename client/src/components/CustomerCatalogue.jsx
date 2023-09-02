@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class CustomerCatalogue extends Component {
     constructor(props) {
@@ -27,6 +28,11 @@ class CustomerCatalogue extends Component {
             searchQuery: '',
             cart: [],
             quantitySelected: {},
+            paymentInfo: {
+                cardNumber: '',
+                expirationDate: '',
+                cvv: '',
+            },
         };
 
         this.handleStoreChange = this.handleStoreChange.bind(this);
@@ -53,7 +59,6 @@ class CustomerCatalogue extends Component {
             return total;
         }, 0);
     
-
         const remainingQuantity = quantity - totalQuantityInCart;
     
         if (selectedQuantity === 0 || selectedQuantity > remainingQuantity) {
@@ -95,8 +100,18 @@ class CustomerCatalogue extends Component {
         });
     };
 
+    handlePaymentChange = (event) => {
+        const { name, value } = event.target;
+        this.setState((prevState) => ({
+            paymentInfo: {
+                ...prevState.paymentInfo,
+                [name]: value,
+            },
+        }));
+    };
+
     render() {
-        const { products, selectedStore, searchQuery, cart } = this.state;
+        const { products, selectedStore, searchQuery, cart, paymentInfo } = this.state;
 
         const filteredByStore = selectedStore === '' ? products : products.filter((product) => product.store === selectedStore);
 
@@ -194,7 +209,7 @@ class CustomerCatalogue extends Component {
                     </table>
                 </div>
                 <div className='flex justify-center mt-4'>
-                    <h2 className='text-4xl pb-10 font-display font-bold'>Cart</h2>
+                    <h1 className='text-4xl pb-10 font-display font-bold'>Cart</h1>
                 </div>
                 <div className='flex justify-center'>
                     <table cellPadding='20'>
@@ -210,11 +225,73 @@ class CustomerCatalogue extends Component {
                                 <tr key={index}>
                                     <td>{item.name}</td>
                                     <td>{item.quantity}</td>
-                                    <td>${item.price}</td>
+                                    <td>${item.price.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                </div>
+                <div className='flex justify-center mt-6'>
+                    <h1 className='text-4xl pb-4 font-display font-bold my-10'>Payment Information</h1>
+                </div>
+                <div className='flex justify-center'>
+                    <form className='w-full max-w-lg'>
+                        <div className='flex flex-wrap -mx-3 mb-6'>
+                            <div className='w-full px-3'>
+                                <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='grid-card-number'>
+                                    Card Number
+                                </label>
+                                <input
+                                    className='appearance-none block w-full bg-slate-200 border border-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                    id='grid-card-number'
+                                    type='text'
+                                    placeholder='1234 5678 9012 3456'
+                                    name='cardNumber'
+                                    value={paymentInfo.cardNumber}
+                                    onChange={this.handlePaymentChange}
+                                />
+                            </div>
+                        </div>
+                        <div className='flex flex-wrap -mx-3 mb-6'>
+                            <div className='w-full px-3'>
+                                <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='grid-expiration-date'>
+                                    Expiration Date
+                                </label>
+                                <input
+                                    className='appearance-none block w-full bg-slate-200 border border-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                    id='grid-expiration-date'
+                                    type='text'
+                                    placeholder='MM/YY'
+                                    name='expirationDate'
+                                    value={paymentInfo.expirationDate}
+                                    onChange={this.handlePaymentChange}
+                                />
+                            </div>
+                        </div>
+                        <div className='flex flex-wrap -mx-3 mb-6'>
+                            <div className='w-full px-3'>
+                                <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='grid-cvv'>
+                                    CVV
+                                </label>
+                                <input
+                                    className='appearance-none block w-full bg-slate-200 border border-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                                    id='grid-cvv'
+                                    type='text'
+                                    placeholder='123'
+                                    name='cvv'
+                                    value={paymentInfo.cvv}
+                                    onChange={this.handlePaymentChange}
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <Link to='/post-purchase'>
+                        <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
+                            Confirm Purchase
+                        </button>
+                    </Link>
                 </div>
             </div>
         );

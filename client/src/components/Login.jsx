@@ -24,10 +24,40 @@ class Login extends Component {
         this.setState({password: e.target.value});
     }
 
+
     handleSubmit = (e) => {
-        alert(this.state.username + ' ' + this.state.password);
-        // Check with database here
+        const user = [this.state.username, this.state.password, this.state.type];
+		fetch('http://localhost:3001/signin', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+			if (data.error) {
+				console.error('Error during sign-in:', data.error);
+				alert(data.error);
+			}
+			else {
+				console.log('Sign-In Response:', data.message);
+				alert("Sign-in successful");
+				// save data to local storage here
+				if (this.state.type === "customer") {
+					window.location.href = "/portal/customer";
+				}
+				else if (this.state.type === "supermarket") {
+					window.location.href = "/portal/supermarket";
+				}
+			}
+			})
+			.catch((error) => {
+				console.error('Error during sign-in:', error);
+				alert(error);
+			});
     }
+
 
     render() {
         return (

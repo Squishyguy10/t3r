@@ -105,63 +105,57 @@ class AddItems extends Component {
 		}
     }
 
-
     render() {
         return (
-            <div className='container px-5 mx-auto text-center lg:px-40 h-screen'>
-                <div className='ml-3 mt-5 pb-56'>
-                    <header className='text-3xl font-display pb-10'>
-                        Enter Item Information:
-                    </header>
-                    <div className='pb-4'>
-                        <input
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Item Name'
-                            size='40'
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handleNameChange}
-                        />
+            <div className='pt-24 sm:grid-cols-2 w-full h-screen'>
+                <div className='flex flex-col justify-center'>
+                    <div className='max-w-[480px] w-full mx-auto bg-white p-6'>
+                        <h2 className='text-4xl font-bold text-center py-6'>Enter Item Information</h2>
+                        <div className='flex flex-col py-2'>
+                            <input
+                                className='border p-2'
+                                placeholder='Item Name'
+                                size='40'
+                                onChange={this.handleNameChange}
+                            />
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <input
+                                className='border p-2'
+                                placeholder='Quantity'
+                                size='40'
+                                value={this.state.quantity}
+                                onChange={this.handleQuantityChange}
+                            />
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <input
+                                className='border p-2'
+                                placeholder='Price per Item (Dollars)'
+                                size='40'
+                                value={this.state.price}
+                                onChange={this.handlePriceChange}
+                            />
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <input
+                                type='text'
+                                className='border p-2'
+                                placeholder='Expiry Date'
+                                size='40'
+                                value={this.state.expiry}
+                                style={{ width: '432px' }}
+                                onChange={this.handleExpiryChange}
+                                onFocus={(e) => {
+                                    e.target.type = 'date';
+                                }}
+                                onBlur={(e) => {
+                                    e.target.type = 'text';
+                                }}
+                            />
+                        </div>
+                        <button className='border w-full my-5 py-2 bg-blue-500 hover:bg-blue-700 text-white' onClick={this.handleSubmit}>Submit</button>
                     </div>
-                    <div className='pb-4'>
-                        <input
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Quantity'
-                            size='40'
-                            value={this.state.quantity}
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handleQuantityChange}
-                        />
-                    </div>
-                    <div className='pb-4'>
-                        <input
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Price per Item (Dollars)'
-                            size='40'
-                            value={this.state.price}
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handlePriceChange}
-                        />
-                    </div>
-                    <div className='pb-4'>
-                        <input
-							type='text'
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Expiry Date'
-                            size='40'
-                            value={this.state.expiry}
-                            style={{ textAlign: 'center', width: '330px' }}
-                            onChange={this.handleExpiryChange}
-							onFocus={(e) => {
-								e.target.type = 'date';
-							}}
-							onBlur={(e) => {
-								e.target.type = 'text';
-							}}
-                        />
-                    </div>
-                    <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>
-                        Submit
-                    </button>
                 </div>
             </div>
         )

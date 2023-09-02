@@ -7,7 +7,6 @@ class AddItems extends Component {
         this.state = {
             name: '',
             quantity: '',
-            username: localStorage.getItem("username"), // get from local data
             price: '',
             expiry: '',
         }
@@ -48,40 +47,56 @@ class AddItems extends Component {
     }
 
     handleExpiryChange = (e) => {
-		const inputValue = e.target.value;
-		if (/^\d{4}-\d{2}-\d{2}$/.test(inputValue)) {
-			this.setState({expiry: inputValue});
-		} 
-		else {
-			console.log('Invalid date format');
-		}
+		this.setState({expiry: e.target.value});
 	}
 
 
     handleSubmit = (e) => {
-		const username = this.state.username;
-		const newItem = {
-			name: this.state.name,
-			quantity: parseInt(this.state.quantity),
-			expirationDate: this.state.expiry,
-			price: parseFloat(this.state.price),
-		};
-		fetch(`http://localhost:3001/add-inventory/${username}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({newItem}),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log('Item added successfully:', data.message);
-				alert("Item added successfully.");
+		const username = localStorage.getItem("username");
+		if (username === null) {
+			alert("You are not signed in!");
+			window.location.href("/supermarket-hub");
+		}
+		else if (this.state.name === "") {
+			alert("The item name field cannot be blank.");
+		}
+		else if (this.state.quantity === "") {
+			alert("The quantity field cannot be blank.")
+		}
+		else if (parseInt(this.state.quantity) === 0) {
+			alert("The quantity cannot be 0. How do you expect us to sell 0 of something?");
+		}
+		else if (this.state.price === "") {
+			alert("The price field cannot be blank.");
+		}
+		else if (this.state.expiry === "") {
+			alert("The expiration date field cannot be blank.");
+		}
+		else {
+			const newItem = {
+				name: this.state.name,
+				quantity: parseInt(this.state.quantity),
+				expiry: this.state.expiry,
+				price: parseFloat(this.state.price),
+			};
+		
+			fetch(`http://localhost:3001/add-inventory/${username}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({newItem}),
 			})
-			.catch((error) => {
-				console.error('Error adding item:', error);
-				alert(error);
-			});
+				.then((response) => response.json())
+				.then((data) => {
+					console.log('Item added successfully:', data.message);
+					alert("Item added successfully.");
+				})
+				.catch((error) => {
+					console.error('Error adding item:', error);
+					alert(error);
+				});
+		}
     }
 
 
@@ -123,13 +138,19 @@ class AddItems extends Component {
                     </div>
                     <div className='pb-4'>
                         <input
-							type='date'
+							type='text'
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
                             placeholder='Expiry Date'
                             size='40'
                             value={this.state.expiry}
                             style={{ textAlign: 'center', width: '330px' }}
                             onChange={this.handleExpiryChange}
+							onFocus={(e) => {
+								e.target.type = 'date';
+							}}
+							onBlur={(e) => {
+								e.target.type = 'text';
+							}}
                         />
                     </div>
                     <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>

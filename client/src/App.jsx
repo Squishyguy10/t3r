@@ -15,6 +15,7 @@ import AddItems from './components/AddItems';
 import PostPurchase from './components/PostPurchase';
 import SurveyPage from './components/SurveyPage';
 import Recommendations from './components/Recommendations';
+import Map from './components/Map';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -85,6 +86,10 @@ function App() {
 
           <Route exact path='/post-survey'>
             <Recommendations />
+          </Route>
+
+          <Route exact path='/map'>
+            <Map />
           </Route>
 
         </Switch>

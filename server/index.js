@@ -44,6 +44,15 @@ app.use(cors());
 const OpenAI = require('openai');
 const OpenAIKey = process.env.OPENAIKEY;
 
+const fs = require('fs');
+try {
+	const jsonString = fs.readFileSync("survey.json", "utf-8");
+	const surveyJSON = JSON.parse(jsonString);
+}
+catch (err) {
+	console.error('Error reading or parsing survey.json:', err);
+}
+
 
 app.post('/signup', async (req, res) => {
 	const [email, username, password, coordinates, type, name] = req.body;

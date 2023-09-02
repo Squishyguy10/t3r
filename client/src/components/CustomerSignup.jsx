@@ -85,8 +85,7 @@ class CustomerSignup extends Component {
 
 
     handleSubmit = (e) => {
-        alert(this.state.username + ' ' + this.state.password);
-		
+		//add feedback for user signup here later (success + fail errors)
         const user = [this.state.email, this.state.username, this.state.password, this.state.location, "customer", null];
 		fetch('http://localhost:3001/signup', {
 			method: 'POST',
@@ -99,7 +98,6 @@ class CustomerSignup extends Component {
 			.then((data) => {
 			if (data.error) {
 				console.error('Error during sign-up:', data.error);
-				alert(data.error);
 			} else {
 				console.log('Sign-Up Response:', data.message);
 			}

@@ -94,7 +94,7 @@ class SupermarketSignup extends Component {
         if (emailRegex.test(this.state.email) === false) {
 			alert("Invalid email address.");
 		}
-		else if (this.state.password === this.state.confirm_password) {
+		else if (this.state.password !== this.state.confirm_password) {
 			alert("Password and confirm password fields do not match.");
 		}
 		else if (this.state.password.length < 8) {
@@ -125,6 +125,7 @@ class SupermarketSignup extends Component {
 					alert(data.error);
 				} else {
 					console.log('Sign-Up Response:', data.message);
+					alert("Sign-up successful");
 				}
 				})
 				.catch((error) => {
@@ -242,7 +243,6 @@ class SupermarketSignup extends Component {
                                 </PlacesAutocomplete>
                             </div>
                         }
-                        <pre>{JSON.stringify(this.state.location)}</pre>
                     </div>
                     <div className='space-x-3'>
                         <Link to={'/login/supermarket'}>

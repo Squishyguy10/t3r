@@ -42,9 +42,7 @@ app.use(cors());
 
 
 app.post('/signup', async (req, res) => {
-	console.log(req.body);
 	const [email, username, password, coordinates, type, name] = req.body;
-	console.log(email);
 	
 	const existingUser = await User.findOne({$or: [{username}, {email}]});
 	
@@ -85,8 +83,7 @@ app.post('/signup', async (req, res) => {
 
 
 app.post('/signin', (req, res) => {
-	console.log(req);
-	const {username, password, type} = req.body;
+	const [username, password, type] = req.body;
 
 	User.findOne({username, password, type})
 		.then((user) => {

@@ -123,7 +123,8 @@ class SupermarketSignup extends Component {
 				if (data.error) {
 					console.error('Error during sign-up:', data.error);
 					alert(data.error);
-				} else {
+				}
+				else {
 					console.log('Sign-Up Response:', data.message);
 					alert("Sign-up successful");
 				}

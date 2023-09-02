@@ -13,23 +13,23 @@ export const surveyJson = {
                     "autoGenerate": false,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "Never"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "A few times per year"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "A few times per month"
                         },
                         {
-                            "value": 4,
+                            "value": 3,
                             "text": "A few times per week"
                         },
                         {
-                            "value": 5,
+                            "value": 4,
                             "text": "Every day"
                         }
                     ]
@@ -41,27 +41,27 @@ export const surveyJson = {
                     "title": "Where do you drive to?",
                     "choices": [
                         {
-                            "value": "Item 1",
+                            "value": 0,
                             "text": "Work"
                         },
                         {
-                            "value": "Item 2",
+                            "value": 1,
                             "text": "School"
                         },
                         {
-                            "value": "Item 3",
+                            "value": 2,
                             "text": "Errands"
                         },
                         {
-                            "value": "Item 4",
+                            "value": 3,
                             "text": "Friends' Homes"
                         },
                         {
-                            "value": "Item 5",
+                            "value": 4,
                             "text": "Appointments"
                         },
                         {
-                            "value": "Item 6",
+                            "value": 5,
                             "text": "Stores"
                         }
                     ],
@@ -82,23 +82,23 @@ export const surveyJson = {
                     "isRequired": true,
                     "choices": [
                         {
-                            "value": "Item 1",
+                            "value": 0,
                             "text": "Natural Gas"
                         },
                         {
-                            "value": "Item 2",
+                            "value": 1,
                             "text": "Grid Electricity"
                         },
                         {
-                            "value": "Item 3",
+                            "value": 2,
                             "text": "Oil"
                         },
                         {
-                            "value": "Item 4",
+                            "value": 3,
                             "text": "Propane"
                         },
                         {
-                            "value": "Item 5",
+                            "value": 4,
                             "text": "Solar Electricity"
                         }
                     ],
@@ -119,19 +119,19 @@ export const surveyJson = {
                     "rateCount": 4,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "No"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "Some of them"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "Most of them"
                         },
                         {
-                            "value": 4,
+                            "value": 3,
                             "text": "All of them"
                         }
                     ]
@@ -145,15 +145,15 @@ export const surveyJson = {
                     "rateCount": 3,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "No"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "Sometimes"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "Yes"
                         }
                     ],
@@ -168,15 +168,15 @@ export const surveyJson = {
                     "rateCount": 3,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "No"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "Sometimes"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "Yes"
                         }
                     ],
@@ -190,23 +190,23 @@ export const surveyJson = {
                     "autoGenerate": false,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "0%"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "1-25%"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "26-50%"
                         },
                         {
-                            "value": 4,
+                            "value": 3,
                             "text": "51-75%"
                         },
                         {
-                            "value": 5,
+                            "value": 4,
                             "text": "75-100%"
                         }
                     ]
@@ -219,23 +219,23 @@ export const surveyJson = {
                     "autoGenerate": false,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "Annually or longer"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "Semi-Annually"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "Monthly"
                         },
                         {
-                            "value": 4,
+                            "value": 3,
                             "text": "Weekly"
                         },
                         {
-                            "value": 5,
+                            "value": 4,
                             "text": "Daily"
                         }
                     ]
@@ -255,19 +255,19 @@ export const surveyJson = {
                     "rateCount": 4,
                     "rateValues": [
                         {
-                            "value": 1,
+                            "value": 0,
                             "text": "Quadrennially"
                         },
                         {
-                            "value": 2,
+                            "value": 1,
                             "text": "Bi-annually"
                         },
                         {
-                            "value": 3,
+                            "value": 2,
                             "text": "Annually"
                         },
                         {
-                            "value": 4,
+                            "value": 3,
                             "text": "Semi-annually"
                         }
                     ]
@@ -291,15 +291,15 @@ export const surveyJson = {
                     "isRequired": true,
                     "choices": [
                         {
-                            "value": "Item 1",
+                            "value": 0,
                             "text": "Disposable Plastic Bottled Water"
                         },
                         {
-                            "value": "Item 2",
+                            "value": 1,
                             "text": "Reusing Disposable Bottles"
                         },
                         {
-                            "value": "Item 3",
+                            "value": 2,
                             "text": "Reusable Water Bottles"
                         }
                     ]

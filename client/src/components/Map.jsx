@@ -14,7 +14,7 @@ function Map() {
             const gee = OpenaiKey; // Replace 'YOUR_API_KEY' with your actual OpenAI API key
             const openai = new OpenAI({ apiKey: gee, dangerouslyAllowBrowser: true });
             const response = await openai.completions.create({
-                engine: 'text-davinci-003', // You can use the engine of your choice
+                model: 'text-davinci-003', // You can use the engine of your choice
                 prompt: 'Say hello world',
                 max_tokens: 50, // Adjust as needed
             });

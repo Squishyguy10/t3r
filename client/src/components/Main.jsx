@@ -16,7 +16,7 @@ function Main() {
                             MAKING THE PLANET BETT3R
                         </h1>
                         <div className="mt-60">
-                            <HashLink smooth to='/#about-t3r'>
+                            <HashLink smooth to='/#about'>
                                 <ChevronDoubleDownIcon className='inline-block w-10 text-green-100 animate-bobbing' />
                             </HashLink>
                         </div>
@@ -26,7 +26,7 @@ function Main() {
 
             {/* What is T3R? */}
             <div className="bg-vine-bg">
-                <div id="about-t3r" className='container px-5 pt-28 mx-auto text-center lg:px-40 pb-80'>
+                <div id="about" className='container px-5 pt-28 mx-auto text-center lg:px-40 pb-80'>
                     <FadeInText>
                         <div className='flex flex-col w-full mb-40 pt-3'>
                             <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
@@ -42,14 +42,14 @@ function Main() {
                         </div>
                     </FadeInText>
                     <div className="mt-20">
-                        <HashLink smooth to='/#our-supermarket-program'>
+                        <HashLink smooth to='/#supermarket'>
                             <ChevronDoubleDownIcon className='inline-block w-10 animate-bobbing' />
                         </HashLink>
                     </div>
                 </div>
             </div>
 
-            <div id="our-supermarket-program" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+            <div id="supermarket" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>
                     <div className='flex flex-col w-full mb-40 pt-1'>
                         <ShoppingCartIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
@@ -67,13 +67,13 @@ function Main() {
                     </div>
                 </FadeInText>
                 <div className="mt-20">
-                    <HashLink smooth to='/#our-recycling-program'>
+                    <HashLink smooth to='/#recycling'>
                         <ChevronDoubleDownIcon className='inline-block w-10 animate-bobbing' />
                     </HashLink>
                 </div>
             </div>
 
-            <div id="our-recycling-program" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+            <div id="recycling" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>
                     <div className='flex flex-col w-full mb-40'>
                         <ArrowPathIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
@@ -81,7 +81,12 @@ function Main() {
                             Our Recycling Program
                         </h1>
                         <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
-                            Fortnite ella babagee
+                            Up to 80% of the garbage in landfills are actually recyclable, which
+                            could save billions or even trillions of dollars, as well as many megatons
+                            of resources if managed properly. Although the general population cannot help
+                            with the waste in landfills, we can do our part through recycling and reusing. 
+                            This is why we created a survey that gives you suggestions on how to improve your own
+                            sustainability through recycling and reusing based on your responses to the questions.  
                         </p>
                     </div>
                 </FadeInText>

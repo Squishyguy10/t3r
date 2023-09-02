@@ -14,6 +14,8 @@ import AccountPortalCustomer from './components/AccountPortalCustomer';
 import CustomerCatalogue from './components/CustomerCatalogue';
 import AddItems from './components/AddItems';
 import PostPurchase from './components/PostPurchase';
+import SurveyPage from './components/SurveyPage';
+import Recommendations from './components/Recommendations';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -80,6 +82,14 @@ function App() {
 
           <Route exact path='/post-purchase'>
             <PostPurchase />
+          </Route>
+
+          <Route exact path='/survey'>
+            <SurveyPage />
+          </Route>
+
+          <Route exact path='/post-survey'>
+            <Recommendations />
           </Route>
 
         </Switch>

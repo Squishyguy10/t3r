@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete, {
-    geocodeByAddress,
-    getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Link } from 'react-router-dom';
 import { loadGoogleMapsAPI } from './google-maps-api';
 import Key from './google-maps-api-key';
 
-
 class CustomerSignup extends Component {
-
     constructor(props) {
         super(props);
 
@@ -57,11 +52,9 @@ class CustomerSignup extends Component {
         const inputPhone = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
         let formattedPhone = '';
 
-        if (inputPhone.length >= 10) formattedPhone = `(${inputPhone.substring(0, 3)}) ${inputPhone.substring(3, 6)}-${inputPhone.substring(6, 10)}`;
-        else formattedPhone = inputPhone;
+        inputPhone.length >= 10 ? formattedPhone = `(${inputPhone.substring(0, 3)}) ${inputPhone.substring(3, 6)}-${inputPhone.substring(6, 10)}` : formattedPhone = inputPhone;
 
         this.setState({phone: formattedPhone});
-        
     }
 
     handleUsernameChange = (e) => {
@@ -76,7 +69,6 @@ class CustomerSignup extends Component {
         this.setState({confirm_password: e.target.value});
     }
 
-    
 
     handleSelect = async (selectedAddress) => {
         try {
@@ -213,7 +205,6 @@ class CustomerSignup extends Component {
             </div>
         );
     }
-
 }
 
 export default CustomerSignup;

@@ -6,7 +6,7 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user, // either customer or supermarket
+            type: props.user, // either customer or supermarket
             username: '',
             password: '',
         }
@@ -41,7 +41,7 @@ class Login extends Component {
                     <div className='pb-4'>
                         <input 
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Username'
+                            placeholder={this.state.type === 'supermarket' ? 'Company' : 'Username'}
                             style={{ textAlign: 'center' }}
                             onChange={this.handleUsernameChange}
                         />
@@ -56,7 +56,7 @@ class Login extends Component {
                         />
                     </div>
                     <div className='space-x-1'>
-                        <Link to={'/signup/' + this.state.user}>
+                        <Link to={'/signup/' + this.state}>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
                                 Sign Up
                             </button>

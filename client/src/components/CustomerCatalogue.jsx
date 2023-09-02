@@ -31,19 +31,22 @@ class CustomerCatalogue extends Component {
 			.then((supermarkets) => {
 				const storeNames = [];
 				const itemDetails = [];
-
+				
+				let i = 0;
 				supermarkets.forEach((supermarket) => {
 					const storeName = supermarket.name;
 					storeNames.push(storeName);
 
 					supermarket.inventory.forEach((item) => {
 						itemDetails.push({
+							index: i,
 							store: storeName,
 							name: item.name,
 							price: item.price,
 							expiry: item.expiry,
 							quantity: item.quantity,
 						});
+						i++;
 					});
 				});
 				console.log('Store Names:', storeNames);
@@ -69,11 +72,11 @@ class CustomerCatalogue extends Component {
 
 	addToCart = (product) => {
 		const { cart, quantitySelected } = this.state;
-		const { name, quantity, price } = product;
-		const selectedQuantity = quantitySelected[name] || 0;
+		const { name, quantity, price, index } = product;
+		const selectedQuantity = quantitySelected[index] || 0;
 	
 		const totalQuantityInCart = cart.reduce((total, item) => {
-			if (item.name === name) {
+			if (item.index === index) {
 				return total + item.quantity;
 			}
 			return total;
@@ -90,11 +93,12 @@ class CustomerCatalogue extends Component {
 			name,
 			quantity: selectedQuantity,
 			price: price * selectedQuantity,
+			index: index,
 		});
 	
 		this.setState({
 			cart: updatedCart,
-			quantitySelected: { ...quantitySelected, [name]: 0 },
+			quantitySelected: { ...quantitySelected, [index]: 0 },
 		});
 	};
 

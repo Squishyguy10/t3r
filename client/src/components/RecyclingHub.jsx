@@ -14,7 +14,7 @@ function RecyclingHub() {
                 </h1>
             </div>
 
-            <h1 className='text-2xl font-medium mb-10'>Choose your portal:</h1>
+            <h1 className='text-2xl font-medium mb-10'>Complete the survey to get recommendations:</h1>
 
             {/*Buttons*/}
             <div className='pb-5'>

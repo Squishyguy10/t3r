@@ -49,7 +49,7 @@ function Main() {
                 </div>
             </div>
 
-            <hr className="py-5 bg-green-200 border-none"/>
+            <hr className="bg-green-200 border-none h-10"/>
 
             <div className='bg-fruit-bg bg-no-repeat'>
                 <div id="supermarket" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
@@ -77,6 +77,7 @@ function Main() {
                 </div>
             </div>
 
+            <hr className="bg-green-200 border-none h-10"/>
 
             <div id="recycling" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>

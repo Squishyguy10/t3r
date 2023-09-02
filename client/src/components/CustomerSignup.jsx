@@ -132,112 +132,107 @@ class CustomerSignup extends Component {
     render() {
         const { googleMaps } = this.state;
         return (
-            <div className='container px-5 mx-auto text-center lg:px-40'>
+            <div className='pt-24 sm:grid-cols-2 w-full h-screen'>
+                <div className='flex flex-col justify-center'>
+                    <div className='max-w-[420px] w-full mx-auto bg-white p-6'>
+                        <h2 className='text-4xl font-bold text-center py-6'> CREATE ACCOUNT</h2>
 
-                <div className='mt-5 pb-56'>
-                    <header className='text-3xl font-display pb-10'>
-                        Make your account here:
-                    </header>
-                    <div className='pb-4'>
-                        <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
-                            placeholder='Email'
-                            type='email'
-                            size='40'
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handleEmailChange}
-                        />
-                    </div>
-                    <div className='pb-4'>
-                        <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
-                            placeholder='Phone Number (Type like this: 0000000000)'
-                            type='tel'
-                            size='40'
-                            value={this.state.phone}
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handlePhoneChange}
-                        />
-                    </div>  
-                    <div className='pb-4'>
-                        <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
-                            placeholder='Username'
-                            size='40'
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handleUsernameChange}
-                        />
-                    </div>  
-                    <div className='pb-4'>
-                        <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
-                            placeholder='Password'
-                            type='password'
-                            size='40'
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handlePasswordChange}
-                        />
-                    </div>
-                    <div className='pb-4'>
-                        <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
-                            placeholder='Confirm Password'
-                            type='password'
-                            size='40'
-                            style={{ textAlign: 'center' }}
-                            onChange={this.handleConfirmPasswordChange}
-                        />
-                    </div>
-                    <div>
-                        {googleMaps && 
-                            <div>
-                                <PlacesAutocomplete
-                                value={this.state.place}
-                                onChange={(newPlace) => {this.setState({place: newPlace})}} 
-                                onSelect={this.handleSelect}
-                                >
-                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                        <div>
-                                            <input
-                                                {...getInputProps({
-                                                type: 'search',
-                                                placeholder: 'Location',
-                                                className: 'bg-slate-200 hover:bg-slate-300 border border-black text-center mb-4 rounded-lg p-1',
-                                                size: '40',
-                                                })}
-                                            />
-                                            <div>
-                                                {loading ? <div>Loading...</div> : null}
-                                                {suggestions.map((suggestion) => {
-                                                const className = suggestion.active
-                                                    ? 'suggestion-item--active'
-                                                    : 'suggestion-item';
-                                                return (
-                                                    <div
-                                                    {...getSuggestionItemProps(suggestion, {
-                                                        className,
+                        <div className='flex flex-col py-2'>
+                            <input 
+                                className='border p-2'
+                                placeholder='Email'
+                                type='email'
+                                size='40'
+                                onChange={this.handleEmailChange}
+                            />
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <input 
+                                className='border p-2'
+                                placeholder='Phone Number (Type like this: 0000000000)'
+                                type='tel'
+                                size='40'
+                                value={this.state.phone}
+                                onChange={this.handlePhoneChange}
+                            />
+                        </div>  
+                        <div className='flex flex-col py-2'>
+                            <input 
+                                className='border p-2'
+                                placeholder='Username'
+                                size='40'
+                                onChange={this.handleUsernameChange}
+                            />
+                        </div>  
+                        <div className='flex flex-col py-2'>
+                            <input 
+                                className='border p-2'
+                                placeholder='Password'
+                                type='password'
+                                size='40'
+                                onChange={this.handlePasswordChange}
+                            />
+                        </div>
+                        <div className='flex flex-col py-2'>
+                            <input 
+                                className='border p-2'
+                                placeholder='Confirm Password'
+                                type='password'
+                                size='40'
+                                onChange={this.handleConfirmPasswordChange}
+                            />
+                        </div>
+                        <div>
+                            {googleMaps && 
+                                <div>
+                                    <PlacesAutocomplete
+                                    value={this.state.place}
+                                    onChange={(newPlace) => {this.setState({place: newPlace})}} 
+                                    onSelect={this.handleSelect}
+                                    >
+                                        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                            <div className='flex flex-col py-2'>
+                                                <input
+                                                    {...getInputProps({
+                                                        type: 'search',
+                                                        placeholder: 'Location',
+                                                        className: 'border p-2',
+                                                        size: '40',
                                                     })}
-                                                    >
-                                                    {suggestion.description}
-                                                    </div>
-                                                );
-                                                })}
+                                                />
+                                                <div>
+                                                    {loading ? <div>Loading...</div> : null}
+                                                    {suggestions.map((suggestion) => {
+                                                    const className = suggestion.active
+                                                        ? 'suggestion-item--active'
+                                                        : 'suggestion-item';
+                                                    return (
+                                                        <div
+                                                        {...getSuggestionItemProps(suggestion, {
+                                                            className,
+                                                        })}
+                                                        >
+                                                        {suggestion.description}
+                                                        </div>
+                                                    );
+                                                    })}
+                                                </div>
                                             </div>
-                                        </div>
-                                    )}
-                                </PlacesAutocomplete>
-                            </div>
-                        }
-                    </div>
-                    <div className='space-x-5'>
-                        <Link to={'/login/customer'}>
-                            <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
-                                Go Back
+                                        )}
+                                    </PlacesAutocomplete>
+                                </div>
+                            }
+                        </div>
+                        <div className='space-x-5'>
+                            <Link to={'/login/customer'}>
+                                <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
+                                    Go Back
+                                </button>
+                            </Link>
+                            <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>
+                                Submit
                             </button>
-                        </Link>
-                        <button onClick={this.handleSubmit} className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded'>
-                            Submit
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>

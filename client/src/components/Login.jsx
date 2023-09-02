@@ -64,7 +64,7 @@ class Login extends Component {
             <div className='pt-24 sm:grid-cols-2 w-full h-screen'>
 
                 <div className='flex flex-col justify-center'>
-                    <form className='max-w-[420px] w-full mx-auto bg-white p-6'>
+                    <div className='max-w-[420px] w-full mx-auto bg-white p-6'>
                         <h2 className='text-4xl font-bold text-center py-6'>{this.state.type === 'supermarket' ? 'SUPERMARKET' : 'USER'} LOGIN</h2>
                         <div className='flex flex-col py-2'>
                             <label>{this.state.type === 'supermarket' ? 'Company' : 'Username'}</label>
@@ -74,15 +74,15 @@ class Login extends Component {
                             <label>Password</label>
                             <input className='border p-2' type="password" onChange={this.handlePasswordChange}/>
                         </div>
-                        <button className='border w-full my-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white'>Sign In</button>
+                        <button className='border w-full my-5 py-2 bg-blue-500 hover:bg-blue-700 text-white' onClick={this.handleSubmit}>Sign In</button>
                         <div className='flex justify-between'>
                             <p className='flex items-center wrap-none'> Don't have an account?</p>
 
                             <Link to={'/signup/' + this.state.type}>
-                                <p className='underline text-blue-500' onClick={this.handleSubmit}> Create an account</p>
+                                <p className='underline text-blue-500'> Create an account</p>
                             </Link>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         );

@@ -34,34 +34,33 @@ class Login extends Component {
 			},
 			body: JSON.stringify(user),
 		})
-			.then((response) => response.json())
-			.then((data) => {
-			if (data.error) {
-				console.error('Error during sign-in:', data.error);
-				alert(data.error);
-			}
-			else {
-				console.log('Sign-In Response:', data.message);
-				localStorage.setItem("username", this.state.username);
-				if (this.state.type === "customer") {
-					window.location.href = "/portal/customer";
-				}
-				else if (this.state.type === "supermarket") {
-					window.location.href = "/portal/supermarket";
-				}
-			}
-			})
-			.catch((error) => {
-				console.error('Error during sign-in:', error);
-				alert(error);
-			});
+        .then((response) => response.json())
+        .then((data) => {
+        if (data.error) {
+            console.error('Error during sign-in:', data.error);
+            alert(data.error);
+        }
+        else {
+            console.log('Sign-In Response:', data.message);
+            localStorage.setItem("username", this.state.username);
+            if (this.state.type === "customer") {
+                window.location.href = "/portal/customer";
+            }
+            else if (this.state.type === "supermarket") {
+                window.location.href = "/portal/supermarket";
+            }
+        }
+        })
+        .catch((error) => {
+            console.error('Error during sign-in:', error);
+            alert(error);
+        });
     }
 
 
     render() {
         return (
             <div className='pt-24 sm:grid-cols-2 w-full h-screen'>
-
                 <div className='flex flex-col justify-center'>
                     <div className='max-w-[420px] w-full mx-auto bg-white p-6'>
                         <h2 className='text-4xl font-bold text-center py-6'>{this.state.type === 'supermarket' ? 'SUPERMARKET' : 'CUSTOMER'} LOGIN</h2>

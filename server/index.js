@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const uuid = require('uuid');
+
 const dotenv = require('dotenv');
 dotenv.config();
 const uri = process.env.URI;
@@ -132,6 +134,31 @@ app.get('/supermarkets', (req, res) => {
 			console.error('Error retrieving supermarkets data:', err);
 			res.status(500).json({error: 'Failed to retrieve supermarkets data'});
 		});
+});
+
+
+const surveyResponses = {};
+app.post('/submit_survey', (req, res) => {
+	const response = req.body.response;
+	const user_id = uuid.v4();
+	surveyResponses[user_id] = response;
+	
+	res.json({success: true, user_id});
+});
+
+
+app.post('/get_survey_results', (req, res) => {
+	const user_id = req.body.uuid;
+	const response = surveyResponses[user_id];
+	
+	const result = "Based on your survery responses, you should try to suberman.";
+	
+	if (result) {
+		res.json({success: true, result});
+	}
+	else {
+		res.status(404).json({error: 'User not found'});
+	}
 });
 
 

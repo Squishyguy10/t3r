@@ -6,19 +6,15 @@ function NavBar() {
 
     useEffect(() => {
         const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const bodyHeight = document.body.scrollHeight - windowHeight;
-        const percentage = (scrollY / bodyHeight) * 100;
-        setScrollPercentage(percentage);
+            const percentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            setScrollPercentage(percentage);
         };
-
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-        window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    });
 
     const opacity = scrollPercentage >= 100 ? 0 : 1 - scrollPercentage / 2;
 

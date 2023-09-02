@@ -162,14 +162,14 @@ app.post('/submit_survey', (req, res) => {
 });
 
 
-async function aiGenResults(response) {
+async function aiGenResults(aiprompt) {
 	try {
 		const oaiRequest = new OpenAI({ apiKey: OpenAIKey, dangerouslyAllowBrowser: true });
-		const response = await oaiRequest.chat.completions.create({
+		const airesponse = await oaiRequest.chat.completions.create({
 			model: 'gpt-3.5-turbo',
-			messages: [{'role': 'user', 'content': 'Write a few sentences to tell me eloquently how to improve my lifestyle to be more sustainable if I drive every day, and I always buy new clothes and I don\'t do anything with the old ones'}],
+			messages: [{'role': 'user', 'content': aiprompt}],
 		});
-		return response.choices[0].message.content;
+		return airesponse.choices[0].message.content;
 	}
 	catch (error) {
 		console.error('Error fetching completion:', error);
@@ -177,7 +177,7 @@ async function aiGenResults(response) {
 	}
 }
 
-app.post('/get_survey_results', (req, res) => {
+app.post('/get_survey_results', async (req, res) => {
 	const user_id = req.body.uuid;
 	const response = surveyResponses[user_id];
 	
@@ -185,7 +185,7 @@ app.post('/get_survey_results', (req, res) => {
 		res.status(404).json({error: 'User not found'});
 	}
 	else {
-		let formattedResponse = "Write a few sentences (just one paragraph) to tell me eloquently how to improve my lifestyle to be more sustainable and also what I'm doing well based on my answers in the Q/A below:\n";
+		let aiprompt = "Write a few sentences (just one paragraph) to tell me eloquently how to improve my lifestyle to be more sustainable and also what I'm doing well based on my answers in the Q/A below:\n";
 		for (const [question, answer] of Object.entries(response)) {
 			let formattedQuestion = surveyJSON[question].title;
 			let formattedAnswer = "";
@@ -204,11 +204,11 @@ app.post('/get_survey_results', (req, res) => {
 			else {
 				formattedAnswer = typeof answer === 'boolean' ? (answer ? 'Yes' : 'No') : answer;
 			}
-			formattedResponse += "Question: " + formattedQuestion + "\n";
-			formattedResponse += "Answer: " + formattedAnswer + "\n\n";
+			aiprompt += "Question: " + formattedQuestion + "\n";
+			aiprompt += "Answer: " + formattedAnswer + "\n\n";
 		}
 		
-		const result = aiGenResults(formattedResponse);
+		const result = await aiGenResults(aiprompt);
 		if (result) {
 			res.json({success: true, result});
 		}

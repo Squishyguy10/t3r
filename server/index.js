@@ -46,7 +46,7 @@ const cors = require('cors');
 app.use(cors());
 
 const OpenAI = require('openai');
-const OpenAIKey = process.env.OPENAIKEY;
+const OpenAIKey = process.env.OPENAI_API_KEY;
 if (!OpenAIKey) {
 	console.error("The OpenAI key is missing from the environment variables. Add OPENAI_API_KEY=your key here to the .env file on an empty line.");
 	process.exit();

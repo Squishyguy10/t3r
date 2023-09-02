@@ -89,8 +89,14 @@ class AddItems extends Component {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					console.log('Item added successfully:', data.message);
-					alert("Item added successfully.");
+					if (data.error) {
+						console.error('Error during item submission:', data.error);
+						alert(data.error);
+					}
+					else {
+						console.log('Item added successfully:', data.message);
+						alert("Item added successfully.");
+					}
 				})
 				.catch((error) => {
 					console.error('Error adding item:', error);

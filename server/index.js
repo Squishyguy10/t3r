@@ -105,7 +105,7 @@ app.post('/add-inventory/:username', (req, res) => {
 	Supermarket.findOne({username})
 		.then((store) => {
 			if (!store) {
-				return res.status(404).json({error: 'Store not found'});
+				throw new Error('Store not found');
 			}
 			store.inventory.push(newItem);
 			return store.save();
@@ -114,6 +114,9 @@ app.post('/add-inventory/:username', (req, res) => {
 			res.status(201).json({message: 'Inventory added successfully'});
 		})
 		.catch((err) => {
+			if (err.message === 'Store not found') {
+				return res.status(404).json({error: 'Store not found'});
+			}
 			console.error('Error adding inventory:', err);
 			res.status(500).json({error: 'Failed to add inventory'});
 		});

@@ -12,6 +12,7 @@ module.exports = {
       'nature-bg': "url('../public/naturebg.jpg')",
       'vine-bg': "url('../public/vinebg.png')",
       'fruit-bg': "url('../public/fruitbg.png')",
+      'recycle-bg': "url('../public/recycle.png')",
     },
     extend: {},
   },

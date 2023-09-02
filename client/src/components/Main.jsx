@@ -51,7 +51,7 @@ function Main() {
 
             <hr className="bg-green-200 border-none h-10"/>
 
-            <div className='bg-fruit-bg bg-no-repeat'>
+            <div className='bg-fruit-bg'>
                 <div id="supermarket" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                     <FadeInText>
                         <div className='flex flex-col w-full mb-40 pt-1'>
@@ -79,23 +79,25 @@ function Main() {
 
             <hr className="bg-green-200 border-none h-10"/>
 
-            <div id="recycling" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
-                <FadeInText>
-                    <div className='flex flex-col w-full mb-40'>
-                        <ArrowPathIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
-                        <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
-                            Our Recycling Program
-                        </h1>
-                        <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
-                            Up to 80% of the garbage in landfills are actually recyclable, which
-                            could save billions or even trillions of dollars, as well as many megatons
-                            of resources if managed properly. Although the general population cannot help
-                            with the waste in landfills, we can do our part through recycling and reusing. 
-                            This is why we created a survey that gives you suggestions on how to improve your own
-                            sustainability through recycling and reusing based on your responses to the questions.  
-                        </p>
-                    </div>
-                </FadeInText>
+            <div className="bg-recycle-bg">
+                <div id="recycling" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+                    <FadeInText>
+                        <div className='flex flex-col w-full mb-40'>
+                            <ArrowPathIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
+                            <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
+                                Our Recycling Program
+                            </h1>
+                            <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
+                                Up to 80% of the garbage in landfills are actually recyclable, which
+                                could save billions or even trillions of dollars, as well as many megatons
+                                of resources if managed properly. Although the general population cannot help
+                                with the waste in landfills, we can do our part through recycling and reusing. 
+                                This is why we created a survey that gives you suggestions on how to improve your own
+                                sustainability through recycling and reusing based on your responses to the questions.  
+                            </p>
+                        </div>
+                    </FadeInText>
+                </div>
             </div>
         </div>
     );

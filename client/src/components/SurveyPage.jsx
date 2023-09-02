@@ -16,10 +16,6 @@ function SurveyPage() {
     }, []);
 
     survey.onComplete.add(surveyComplete);
-
-
-
-
     
     return (
         <Survey model={survey} />

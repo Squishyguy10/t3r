@@ -9,6 +9,8 @@ Our app consists of two main components. We have the *Supermarket Program* & the
 
 ***
 
+<br><br>
+
 ### Supermarket Program :shopping_cart:
 
 The idea of the supermarket program is to tackle food waste. As supermarkets end up with a lot of excess food, especially produce, at the end of every day, they eventually have to throw it out as the supply exceeds the demand and the food eventually goes bad. Our app allows supermarkets to register an account and list items for sale on the app. When registering, supermarkets have to provide the company name, store name, username, password, email address, telephone number, and their location. Similarily, customers are able to register accounts, with all of the same information save for company and store names. Supermarkets are allowed to list items for sale, by putting the item names, quantity, expirity date, and price. These items are then displayed onto the item catalogue, where customers are allowed to add to their cart and proceed with their orders.
@@ -18,6 +20,8 @@ The idea of the supermarket program is to tackle food waste. As supermarkets end
 ### Recycling Program :recycle:
 
 The recycling program provides users with a quick survey to fill out. They fill out information about their lifestyles with respect to the environment and then submit it. Our program then takes this information, and, using an artificial intelligence, provides specifically tailored advice to the user for next steps they can take in living a more sustainable life. Moreover, because the users are registererd with their location, our app will find nearby facilities that could aid in the reusing or recycling of items that the user may not have a use for anymore. All of this information is then given to the user, where they will hopefully take some advice and make a shift towards a more sustainable lifestyle. 
+
+<br><br>
 
 ## Why We Created This App :grey_question:
 
@@ -38,6 +42,8 @@ Consumers will benefit from this vastly as well. They will be able to purchase g
 ### Recycling Program :recycle:
 
 Consumerism is a problem that plagues us all. Whether it is planned obsolescence or perceived obsolescence, too many non-biodegradable items get thrown out for seemingly no good reason. Why must this continue? How can we stop this? First and foremost, we must address the root causes of these issues. While planned obsolescence is out of our control, we can most certainly help prevent perceived obsolescence. We provide to the user a survey that asks very important questions about their lifestyles with respect to the environment. We then provide meaningful and life-changing recommendations to the user as to what next steps they can take in making their lifestyles much more sustainable, drastically improving their impact on the beautiful planet we call home. Furthermore, we understand that many people simply do not know where they can go or what they can do with items that they no longer have any use for but are still perfectly usable. Our app also helps people with that.
+
+<br><br>
 
 ## What Technologies Did We Use :computer:
 
@@ -102,6 +108,8 @@ Furthermore, we used Google Maps API for the Recycling Program. When users submi
 
 Part of our app uses a generative pre-trained transformer (GPT) to generate an eloquent response for the user to see in the recycling program. We used `gpt-3.5-turbo` as it supports chat completion, therefore it will produce the most eloquent responses while costing the least amount of money as opposed to `gpt-4`. 
 
+<br><br>
+
 ## File Structure :file_folder:
 
 From our root directory, you can see the following folders:
@@ -133,6 +141,8 @@ Within `client`, you can see the following (and other files):
 
 Within `server` , the only important file is `index.js`, which stores all of the back-end processes, including the API calls, accessing MongoDB Atlas, as well as handling calls with the front-end. It stores all of the API methods that we use, and any time a user from the front-end presses a submit button or anything that requires the calling of an API, it is handled in `server/index.js`.
 
+<br><br>
+
 ## Challenges Faced :fearful:
 
 Our journey in creating this project was not without its fair share of challenges. Near the beginning, when we were just setting everything up, we had a lot of problems with Tailwind. For some reason, a lot of the styling simply did not work. For example, I tried colouring a button using `bg-green-400`, but for some reason it only accepted `bg-green-300` or `bg-green-200`, despite `bg-green-400` being a perfectly valid colour. Also, one of our computers simply did not render *any* of the CSS. We could not figure out why this was happening, so we simply deleted everything and rewrote the code. Magically, the error disappeared. 
@@ -153,6 +163,8 @@ Also, we struggled a little bit with MongoDB Atlas as well, since this was our f
 
 Another struggle we faced was displaying the item catalogue to the user, where they would be able to add items to a shopping cart. In specific, we did not know how to limit a user from adding more items than there were in stock to their cart, but through reading resources on the internet and watching YouTube videos, we were able to create our own implementation of a cart system. 
 
+<br><br>
+
 ## Accomplishments We Are Proud Of :trophy:
 
 Making this app ourselves while learning throughout the journey, we have many things we are proud of. Here is a list of all our achievements we hold dear!
@@ -169,6 +181,7 @@ Making this app ourselves while learning throughout the journey, we have many th
 
 * And of course, all our perserverence and hardwork we put in!
 
+<br><br>
 
 ## Future of T3R :globe_with_meridians:
 

@@ -243,7 +243,6 @@ class SupermarketSignup extends Component {
                                 </PlacesAutocomplete>
                             </div>
                         }
-                        <pre>{JSON.stringify(this.state.location)}</pre>
                     </div>
                     <div className='space-x-3'>
                         <Link to={'/login/supermarket'}>

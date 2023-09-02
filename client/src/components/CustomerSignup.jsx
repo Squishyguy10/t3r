@@ -85,26 +85,46 @@ class CustomerSignup extends Component {
 
 
     handleSubmit = (e) => {
-		//add feedback for user signup here later (success + fail errors)
-        const user = [this.state.email, this.state.username, this.state.password, this.state.location, "customer", null];
-		fetch('http://localhost:3001/signup', {
-			method: 'POST',
-			headers: {
-			'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(user),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-			if (data.error) {
-				console.error('Error during sign-up:', data.error);
-			} else {
-				console.log('Sign-Up Response:', data.message);
-			}
+		const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        if (emailRegex.test(this.state.email) === false) {
+			alert("Invalid email address.");
+		}
+		else if (this.state.password === this.state.confirm_password) {
+			alert("Password and confirm password fields do not match.");
+		}
+		else if (this.state.password.length < 8) {
+			alert("Password must be 8 characters or longers.");
+		}
+		else if (this.state.username === "") {
+			alert("The username field cannot be blank.");
+		}
+		else if (this.state.location === null) {
+			alert("The location field cannot be blank.");
+		}
+		else {
+			const user = [this.state.email, this.state.username, this.state.password, this.state.location, "customer", null];
+			fetch('http://localhost:3001/signup', {
+				method: 'POST',
+				headers: {
+				'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(user),
 			})
-			.catch((error) => {
-				console.error('Error during sign-up:', error);
-			});
+				.then((response) => response.json())
+				.then((data) => {
+				if (data.error) {
+					console.error('Error during sign-up:', data.error);
+					alert(data.error);
+				} else {
+					console.log('Sign-Up Response:', data.message);
+					alert("Sign-up successful");
+				}
+				})
+				.catch((error) => {
+					console.error('Error during sign-up:', error);
+					alert(error);
+				});
+		}
 	}
 
 

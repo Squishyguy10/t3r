@@ -33,7 +33,7 @@ function NavBar() {
                 </nav>
                 <div className='ml-8 title-font font-medium'>
                     <a href='/'>
-                        <img src='logo2.png' alt='T3R' className='text-2xl text-green-500 font-bold text-xl' width="60"/>
+                        <img src='../logo2.png' alt='T3R' className='text-2xl text-green-500 font-bold text-xl' width="60"/>
                     </a>
                 </div>
                 <nav className='text-xl'>

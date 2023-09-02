@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete, {
-    geocodeByAddress,
-    getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Link } from 'react-router-dom';
 import { loadGoogleMapsAPI } from './google-maps-api';
 import Key from './google-maps-api-key';
 
-
 class SupermarketSignup extends Component {
-
     constructor(props) {
         super(props);
 
@@ -37,7 +32,6 @@ class SupermarketSignup extends Component {
     }
 
     componentDidMount() {
-
         loadGoogleMapsAPI(Key())
         .then((maps) => {
             this.setState({ googleMaps: maps });
@@ -63,11 +57,9 @@ class SupermarketSignup extends Component {
         const inputPhone = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
         let formattedPhone = '';
 
-        if (inputPhone.length >= 10) formattedPhone = `(${inputPhone.substring(0, 3)}) ${inputPhone.substring(3, 6)}-${inputPhone.substring(6, 10)}`;
-        else formattedPhone = inputPhone;
+        inputPhone.length >= 10 ? formattedPhone = `(${inputPhone.substring(0, 3)}) ${inputPhone.substring(3, 6)}-${inputPhone.substring(6, 10)}` : formattedPhone = inputPhone;
 
         this.setState({phone: formattedPhone});
-        
     }
 
     handleCompanyChange = (e) => {
@@ -82,7 +74,6 @@ class SupermarketSignup extends Component {
         this.setState({confirm_password: e.target.value});
     }
 
-    
 
     handleSelect = async (selectedAddress) => {
         try {
@@ -108,7 +99,6 @@ class SupermarketSignup extends Component {
         const { googleMaps } = this.state;
         return (
             <div className='container px-5 mx-auto text-center lg:px-40'>
-
                 <div className='ml-3 mt-5 pb-56'>
                     <header className='text-3xl font-display pb-10'>
                         Make your account here:
@@ -228,7 +218,6 @@ class SupermarketSignup extends Component {
             </div>
         );
     }
-
 }
 
 export default SupermarketSignup;

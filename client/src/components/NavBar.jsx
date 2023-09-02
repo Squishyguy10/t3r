@@ -29,7 +29,7 @@ function NavBar() {
 
     return (
         <header style={headerStyles} className='md:sticky top-0'>
-            <div className='container flex p-1 text-green-400 items-center ml-[36.1%]'>
+            <div className='container flex text-green-400 items-center ml-[36.25%]'>
                 <nav className='text-xl'>
                     <a href='/supermarket-hub' className='hover:text-green-200'>
                         Supermarket Program

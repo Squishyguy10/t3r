@@ -90,10 +90,28 @@ class SupermarketSignup extends Component {
 
 
     handleSubmit = (e) => {
-        alert(this.state.username + ' ' + this.state.password);
-        // Add to database
-        // handle everything else 
+        //add feedback for user signup here later (success + fail errors)
+        const user = [this.state.email, this.state.username, this.state.password, this.state.location, "supermarket", this.state.store];
+		fetch('http://localhost:3001/signup', {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+			if (data.error) {
+				console.error('Error during sign-up:', data.error);
+			} else {
+				console.log('Sign-Up Response:', data.message);
+			}
+			})
+			.catch((error) => {
+				console.error('Error during sign-up:', error);
+			});
     }
+
 
     render() {
         const { googleMaps } = this.state;

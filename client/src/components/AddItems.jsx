@@ -108,10 +108,10 @@ class AddItems extends Component {
 
     render() {
         return (
-            <div className='container px-5 mx-auto text-center lg:px-40'>
+            <div className='container px-5 mx-auto text-center lg:px-40 h-screen'>
                 <div className='ml-3 mt-5 pb-56'>
                     <header className='text-3xl font-display pb-10'>
-                        Enter item information here:
+                        Enter Item Information:
                     </header>
                     <div className='pb-4'>
                         <input

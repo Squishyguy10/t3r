@@ -95,7 +95,7 @@ class AddItems extends Component {
 					}
 					else {
 						console.log('Item added successfully:', data.message);
-						alert("Item added successfully.");
+						window.location.href = "/catalogue/supermarket";
 					}
 				})
 				.catch((error) => {

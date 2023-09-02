@@ -42,7 +42,6 @@ class Login extends Component {
 			}
 			else {
 				console.log('Sign-In Response:', data.message);
-				alert("Sign-in successful");
 				localStorage.setItem("username", this.state.username);
 				if (this.state.type === "customer") {
 					window.location.href = "/portal/customer";

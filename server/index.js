@@ -41,6 +41,9 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
+const OpenAI = require('openai');
+const OpenAIKey = process.env.OPENAIKEY;
+
 
 app.post('/signup', async (req, res) => {
 	const [email, username, password, coordinates, type, name] = req.body;
@@ -146,6 +149,21 @@ app.post('/submit_survey', (req, res) => {
 	res.json({success: true, user_id});
 });
 
+
+async function aiGenResults(response) {
+	try {
+		const oaiRequest = new OpenAI({ apiKey: gee, dangerouslyAllowBrowser: true });
+		const response = await oaiRequest.chat.completions.create({
+			model: 'gpt-3.5-turbo',
+			messages: [{'role': 'user', 'content': 'Write a few sentences to tell me eloquently how to improve my lifestyle to be more sustainable if I drive every day, and I always buy new clothes and I don\'t do anything with the old ones'}],
+		});
+		return response.choices[0].message.content;
+	}
+	catch (error) {
+		console.error('Error fetching completion:', error);
+		return 'Error occurred while generating text.';
+	}
+}
 
 app.post('/get_survey_results', (req, res) => {
 	const user_id = req.body.uuid;

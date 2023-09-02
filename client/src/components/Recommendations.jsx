@@ -6,7 +6,7 @@ class Recommendations extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			gptMsg: 'Basjalagoong', // GET THIS FROM BACKEND API CALL UTILIZING THE 
+			gptMsg: 'Loading...',
 		};
 		
 		if (!Recommendations.executeSecond) {

@@ -6,6 +6,10 @@ const uuid = require('uuid');
 const dotenv = require('dotenv');
 dotenv.config();
 const uri = process.env.URI;
+if (!uri) {
+	console.log("The MongoDB Atlas URI is missing from the environment variables. Add URI=your uri here to the .env file on an empty line.");
+	process.exit();
+}
 
 const PORT = process.env.PORT || 3001;
 
@@ -42,16 +46,15 @@ const cors = require('cors');
 app.use(cors());
 
 const OpenAI = require('openai');
-const OpenAIKey = process.env.OPENAIKEY;
+const OpenAIKey = process.env.OPENAI_API_KEY;
+if (!OpenAIKey) {
+	console.error("The OpenAI key is missing from the environment variables. Add OPENAI_API_KEY=your key here to the .env file on an empty line.");
+	process.exit();
+}
 
 const fs = require('fs');
-try {
-	const jsonString = fs.readFileSync("survey.json", "utf-8");
-	const surveyJSON = JSON.parse(jsonString);
-}
-catch (err) {
-	console.error('Error reading or parsing survey.json:', err);
-}
+const jsonString = fs.readFileSync("survey.json", "utf-8");
+const surveyJSON = JSON.parse(jsonString);
 
 
 app.post('/signup', async (req, res) => {
@@ -159,14 +162,14 @@ app.post('/submit_survey', (req, res) => {
 });
 
 
-async function aiGenResults(response) {
+async function aiGenResults(aiprompt) {
 	try {
-		const oaiRequest = new OpenAI({ apiKey: gee, dangerouslyAllowBrowser: true });
-		const response = await oaiRequest.chat.completions.create({
+		const oaiRequest = new OpenAI({ apiKey: OpenAIKey, dangerouslyAllowBrowser: true });
+		const airesponse = await oaiRequest.chat.completions.create({
 			model: 'gpt-3.5-turbo',
-			messages: [{'role': 'user', 'content': 'Write a few sentences to tell me eloquently how to improve my lifestyle to be more sustainable if I drive every day, and I always buy new clothes and I don\'t do anything with the old ones'}],
+			messages: [{'role': 'user', 'content': aiprompt}],
 		});
-		return response.choices[0].message.content;
+		return airesponse.choices[0].message.content;
 	}
 	catch (error) {
 		console.error('Error fetching completion:', error);
@@ -174,19 +177,47 @@ async function aiGenResults(response) {
 	}
 }
 
-app.post('/get_survey_results', (req, res) => {
+app.post('/get_survey_results', async (req, res) => {
 	const user_id = req.body.uuid;
 	const response = surveyResponses[user_id];
 	
-	const result = "Based on your survery responses, you should try to suberman.";
-	
-	if (result) {
-		res.json({success: true, result});
-	}
-	else {
+	if (!response) {
 		res.status(404).json({error: 'User not found'});
 	}
+	else {
+		let aiprompt = "Write a few sentences (just one paragraph) to tell me eloquently how to improve my lifestyle to be more sustainable and also what I'm doing well based on my answers in the Q/A below:\n";
+		for (const [question, answer] of Object.entries(response)) {
+			let formattedQuestion = surveyJSON[question].title;
+			let formattedAnswer = "";
+			if ("choices" in surveyJSON[question]) {
+				if (Array.isArray(answer)) {
+					const formattedAnswerArray = []
+					for (const index of answer) {
+						formattedAnswerArray.push(surveyJSON[question].choices[index]);
+					}
+					formattedAnswer = formattedAnswerArray.join(", ");
+				}
+				else {
+					formattedAnswer = surveyJSON[question].choices[answer]
+				}
+			}
+			else {
+				formattedAnswer = typeof answer === 'boolean' ? (answer ? 'Yes' : 'No') : answer;
+			}
+			aiprompt += "Question: " + formattedQuestion + "\n";
+			aiprompt += "Answer: " + formattedAnswer + "\n\n";
+		}
+		
+		const result = await aiGenResults(aiprompt);
+		if (result) {
+			res.json({success: true, result});
+		}
+		else {
+			res.status(500).json({error: 'Failed to generate recommendations'});
+		}
+	}
 });
+
 
 
 const start = async() => {

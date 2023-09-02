@@ -1,7 +1,7 @@
 {
 	"question1": {
 		"title": "How often do you drive?",
-		"rateValues": [
+		"choices": [
 			"Never",
 			"A few times per year",
 			"A few times per month",
@@ -38,7 +38,7 @@
 	},
 	"question9": {
 		"title": "Are your appliances energy efficient? (such as being Energy Star rated)",
-		"rateValues": [
+		"choices": [
 			"No",
 			"Some of them",
 			"Most of them",
@@ -47,7 +47,7 @@
 	},
 	"question5": {
 		"title": "Do you recycle recyclable products?",
-		"rateValues": [
+		"choices": [
 			"No",
 			"Sometimes",
 			"Yes"
@@ -55,7 +55,7 @@
 	},
 	"question6": {
 		"title": "Do you compost organic waste?",
-		"rateValues": [
+		"choices": [
 			"No",
 			"Sometimes",
 			"Yes"
@@ -63,7 +63,7 @@
 	},
 	"question7": {
 		"title": "Around how much of your diet is locally grown/produced food?",
-		"rateValues": [
+		"choices": [
 			"0%",
 			"1-25%",
 			"26-50%",
@@ -73,7 +73,7 @@
 	},
 	"question8": {
 		"title": "Around how often do you buy new clothing?",
-		"rateValues": [
+		"choices": [
 			"Annually or longer",
 			"Semi-Annually",
 			"Monthly",
@@ -86,7 +86,7 @@
 	},
 	"question11": {
 		"title": "Around how often do you upgrade your electronics? (for example buying a new phone)",
-		"rateValues": [
+		"choices": [
 			"Quadrennially",
 			"Bi-annually",
 			"Annually",

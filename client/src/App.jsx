@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className='bg-green-200'>
+    <div className='bg-green-100'>
       
       <NavBar />
 

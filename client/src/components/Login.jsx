@@ -64,7 +64,7 @@ class Login extends Component {
 
                 <div className='flex flex-col justify-center'>
                     <div className='max-w-[420px] w-full mx-auto bg-white p-6'>
-                        <h2 className='text-4xl font-bold text-center py-6'>{this.state.type === 'supermarket' ? 'SUPERMARKET' : 'USER'} LOGIN</h2>
+                        <h2 className='text-4xl font-bold text-center py-6'>{this.state.type === 'supermarket' ? 'SUPERMARKET' : 'CUSTOMER'} LOGIN</h2>
                         <div className='flex flex-col py-2'>
                             <label>{this.state.type === 'supermarket' ? 'Company' : 'Username'}</label>
                             <input className='border p-2' type="text" onChange={this.handleUsernameChange}/>

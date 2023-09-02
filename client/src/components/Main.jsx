@@ -58,11 +58,11 @@ function Main() {
                         </h1>
                         <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
                             Over one third of all food products produced yearly end up wasted,
-                            a lot of which come from supermarkets. With over 3 billion people
-                            not being to afford a healthy diet, we wanted someway to prevent such food waste
+                            a lot of which come from supermarkets. With over 3 billion people not
+                            being to afford a healthy diet, we wanted some way to prevent such food waste
                             and make the world more sustainable. Thus, we decided to create a program
-                            where companies can list food, that are nearing the expiration date, for lower prices.
-                            Individuals can then view the listed items, and locate nearby stores for pickup. 
+                            where companies can list food for lower prices, where individuals can then 
+                            view the listed items, and locate nearby stores for pickup. 
                         </p>
                     </div>
                 </FadeInText>

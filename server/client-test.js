@@ -3,21 +3,18 @@ let mode = "add-item";
 const email = "suberman@example.com";
 const username = "fortinos-suberman";
 const password = "password123";
-const coordinates = [0, 0];
+const coordinates = {lat: 0.0, lng: 0.0};
 const type = "supermarket";
 const name = "Suberman's Butcher Shop";
 
 
 
 if (mode == "add-item") {
-	const addItemForm = document.getElementById('addItemForm');
-
 	const newItem = {
 		name: "Banana",
 		quantity: 5,
 		expirationDate: '2023-12-31',
-		originalPrice: 3.00,
-		currentPrice: 3.50,
+		price: 3.00,
 	};
 
 	fetch(`http://localhost:3001/add-inventory/${username}`, {
@@ -63,8 +60,8 @@ if (mode == "up") {
 		.then((data) => {
 		if (data.error) {
 			console.error('Error during sign-up:', data.error);
-			alert(data.error);
-		} else {
+		}
+		else {
 			console.log('Sign-Up Response:', data.message);
 		}
 		})

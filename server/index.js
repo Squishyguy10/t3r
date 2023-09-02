@@ -19,8 +19,7 @@ const supermarketSchema = new mongoose.Schema({
 			name: String,
 			quantity: Number,
 			expirationDate: Date,
-			originalPrice: Number,
-			currentPrice: Number,
+			price: Number,
 		},
 	],
 });

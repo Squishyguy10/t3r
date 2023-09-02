@@ -7,7 +7,7 @@ class AddItems extends Component {
         this.state = {
             name: '',
             quantity: '',
-            store: '', // get from local data
+            username: localStorage.getItem("username"), // get from local data
             price: '',
             expiry: '',
         }
@@ -48,12 +48,42 @@ class AddItems extends Component {
     }
 
     handleExpiryChange = (e) => {
-        this.setState({ expiry: e.target.value.replace(/\D/g, '') });
-    }
+		const inputValue = e.target.value;
+		if (/^\d{4}-\d{2}-\d{2}$/.test(inputValue)) {
+			this.setState({expiry: inputValue});
+		} 
+		else {
+			console.log('Invalid date format');
+		}
+	}
+
 
     handleSubmit = (e) => {
-        // add items to the database <3
+		const username = this.state.username;
+		const newItem = {
+			name: this.state.name,
+			quantity: parseInt(this.state.quantity),
+			expirationDate: this.state.expiry,
+			price: parseFloat(this.state.price),
+		};
+		fetch(`http://localhost:3001/add-inventory/${username}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({newItem}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('Item added successfully:', data.message);
+				alert("Item added successfully.");
+			})
+			.catch((error) => {
+				console.error('Error adding item:', error);
+				alert(error);
+			});
     }
+
 
     render() {
         return (
@@ -93,11 +123,12 @@ class AddItems extends Component {
                     </div>
                     <div className='pb-4'>
                         <input
+							type='date'
                             className='bg-slate-200 hover:bg-slate-300 border border-black'
-                            placeholder='Days Until Expiry'
+                            placeholder='Expiry Date'
                             size='40'
                             value={this.state.expiry}
-                            style={{ textAlign: 'center' }}
+                            style={{ textAlign: 'center', width: '330px' }}
                             onChange={this.handleExpiryChange}
                         />
                     </div>
@@ -108,7 +139,6 @@ class AddItems extends Component {
             </div>
         )
     }
-
 }
 
 export default AddItems;

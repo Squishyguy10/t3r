@@ -102,11 +102,11 @@ class CustomerCatalogue extends Component {
 		});
 	};
 
-	handleQuantityChange = (filteredProducts, index, event) => {
+	handleQuantityChange = (index, event) => {
 		const { name, value } = event.target;
 		const parsedValue = parseInt(value, 10) || 0;
 
-		if (parsedValue < 0 || parsedValue > filteredProducts[index].quantity) return;
+		if (parsedValue < 0 || parsedValue > this.state.products[index].quantity) return;
 
 		this.setState((prevState) => ({
 			quantitySelected: {
@@ -226,10 +226,10 @@ class CustomerCatalogue extends Component {
 											type='number'
 											min='0'
 											max={product.quantity}
-											name={index}
-											value={this.state.quantitySelected[index] || 0}
+											name={product.index}
+											value={this.state.quantitySelected[product.index] || 0}
 											onChange={(event) =>
-												this.handleQuantityChange(filteredProducts, index, event)
+												this.handleQuantityChange(product.index, event)
 											}
 										/>
 									</td>

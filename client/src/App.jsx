@@ -9,6 +9,7 @@ import CustomerSignup from './components/CustomerSignup';
 import Map from './components/Map';
 import SupermarketCatalogue from './components/SupermarketCatalogue';
 import AccountPortalSupermarket from './components/AccountPortalSupermarket';
+import AccountPortalCustomer from './components/AccountPortalCustomer';
 import AddItems from './components/AddItems';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -56,6 +57,10 @@ function App() {
 
           <Route exact path='/portal/supermarket'>
             <AccountPortalSupermarket />
+          </Route>
+
+          <Route exact path='/portal/customer'>
+            <AccountPortalCustomer />
           </Route>
 
           <Route exact path='/add-item'>

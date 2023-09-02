@@ -49,29 +49,34 @@ function Main() {
                 </div>
             </div>
 
-            <div id="supermarket" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
-                <FadeInText>
-                    <div className='flex flex-col w-full mb-40 pt-1'>
-                        <ShoppingCartIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
-                        <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
-                            Our Supermarket Program
-                        </h1>
-                        <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
-                            Over one third of all food products produced yearly end up wasted,
-                            a lot of which come from supermarkets. With over 3 billion people not
-                            being to afford a healthy diet, we wanted some way to prevent such food waste
-                            and make the world more sustainable. Thus, we decided to create a program
-                            where companies can list food for lower prices, where individuals can then 
-                            view the listed items, and locate nearby stores for pickup. 
-                        </p>
+            <hr className="py-5 bg-green-200 border-none"/>
+
+            <div className='bg-fruit-bg bg-no-repeat'>
+                <div id="supermarket" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+                    <FadeInText>
+                        <div className='flex flex-col w-full mb-40 pt-1'>
+                            <ShoppingCartIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
+                            <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
+                                Our Supermarket Program
+                            </h1>
+                            <p className='lg:w-3/5 sm:text-xl mx-auto leading-relaxed text-base text-green-700'>
+                                Over one third of all food products produced yearly end up wasted,
+                                a lot of which come from supermarkets. With over 3 billion people not
+                                being to afford a healthy diet, we wanted some way to prevent such food waste
+                                and make the world more sustainable. Thus, we decided to create a program
+                                where companies can list food for lower prices, where individuals can then 
+                                view the listed items, and locate nearby stores for pickup. 
+                            </p>
+                        </div>
+                    </FadeInText>
+                    <div className="mt-20">
+                        <HashLink smooth to='/#recycling'>
+                            <ChevronDoubleDownIcon className='inline-block w-10 animate-bobbing' />
+                        </HashLink>
                     </div>
-                </FadeInText>
-                <div className="mt-20">
-                    <HashLink smooth to='/#recycling'>
-                        <ChevronDoubleDownIcon className='inline-block w-10 animate-bobbing' />
-                    </HashLink>
                 </div>
             </div>
+
 
             <div id="recycling" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>

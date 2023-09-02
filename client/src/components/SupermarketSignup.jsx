@@ -141,13 +141,13 @@ class SupermarketSignup extends Component {
         const { googleMaps } = this.state;
         return (
             <div className='container px-5 mx-auto text-center lg:px-40'>
-                <div className='ml-3 mt-5 pb-56'>
+                <div className='mt-5 pb-56'>
                     <header className='text-3xl font-display pb-10'>
                         Make your account here:
                     </header>
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Email'
                             type='email'
                             size='40'
@@ -157,7 +157,7 @@ class SupermarketSignup extends Component {
                     </div>
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Phone Number (Type like this: 0000000000)'
                             type='tel'
                             size='40'
@@ -168,7 +168,7 @@ class SupermarketSignup extends Component {
                     </div>  
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Store Name'
                             size='40'
                             style={{ textAlign: 'center' }}
@@ -177,7 +177,7 @@ class SupermarketSignup extends Component {
                     </div>
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Username'
                             size='40'
                             style={{ textAlign: 'center' }}
@@ -186,7 +186,7 @@ class SupermarketSignup extends Component {
                     </div> 
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Password'
                             type='password'
                             size='40'
@@ -196,7 +196,7 @@ class SupermarketSignup extends Component {
                     </div>
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Confirm Password'
                             type='password'
                             size='40'
@@ -216,10 +216,11 @@ class SupermarketSignup extends Component {
                                         <div>
                                             <input
                                                 {...getInputProps({
-                                                type: 'search',
-                                                placeholder: 'Location',
-                                                className: 'bg-slate-200 hover:bg-slate-300 border border-black text-center mb-4',
-                                                size: '40',
+                                                    type: 'search',
+                                                    placeholder: 'Location',
+                                                    className: 'bg-slate-200 hover:bg-slate-300 border border-black mb-4 text-center rounded-lg p-1',
+                                                    size: '40',
+                                                    textAlign: 'center',
                                                 })}
                                             />
                                             <div>
@@ -245,7 +246,7 @@ class SupermarketSignup extends Component {
                             </div>
                         }
                     </div>
-                    <div className='space-x-3'>
+                    <div className='space-x-5'>
                         <Link to={'/login/supermarket'}>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
                                 Go Back

@@ -11,6 +11,7 @@ module.exports = {
     backgroundImage: {
       'nature-bg': "url('../public/naturebg.jpg')",
       'vine-bg': "url('../public/vinebg.png')",
+      'fruit-bg': "url('../public/fruitbg.png')",
     },
     extend: {},
   },

@@ -70,7 +70,7 @@ class Login extends Component {
 
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder={this.state.type === 'supermarket' ? 'Company' : 'Username'}
                             style={{ textAlign: 'center' }}
                             onChange={this.handleUsernameChange}
@@ -78,7 +78,7 @@ class Login extends Component {
                     </div>  
                     <div className='pb-4'>
                         <input 
-                            className='bg-slate-200 hover:bg-slate-300 border border-black'
+                            className='bg-slate-200 hover:bg-slate-300 border border-black rounded-lg p-1'
                             placeholder='Password'
                             type='password'
                             style={{ textAlign: 'center' }}

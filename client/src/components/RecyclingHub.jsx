@@ -14,14 +14,11 @@ function RecyclingHub() {
 
             {/* <h1 className='text-2xl font-medium mb-10'></h1> */}
             <div className='p-[30%] pt-4'>
-                <div className='shadow-md shadow-gray-600 rounded-md bg-[url("../public/question.jpg")] bg-none bg-center'>
-                    <h1 className='text-2xl pt-[6%] font-bold pb-[70%]'>
-                        Complete the survey to get recommendations:
-                    </h1>
-                    <div className='pb-10'>
+                <div className='shadow-md shadow-gray-600 rounded-md bg-[url("../public/question.jpg")] bg-none bg-bottom'>
+                    <div className='pb-10 pt-[90%]'>
                         <Link to='/survey'>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
-                                Get Started <span className='ml-1'> ➤ </span>
+                                Begin Questionnaire <span className='ml-1'> ➤ </span>
                             </button>
                         </Link>
                     </div>

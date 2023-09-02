@@ -26,7 +26,7 @@ function Main() {
 
             {/* What is T3R? */}
             <div className="bg-vine-bg">
-                <div id="about-t3r" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
+                <div id="about-t3r" className='container px-5 pt-28 mx-auto text-center lg:px-40 pb-80'>
                     <FadeInText>
                         <div className='flex flex-col w-full mb-40'>
                             <BookOpenIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />

@@ -118,7 +118,8 @@ class CustomerSignup extends Component {
 				}
 				else {
 					console.log('Sign-Up Response:', data.message);
-					alert("Sign-up successful");
+					localStorage.setItem("username", this.state.username);
+					window.location.href = "/portal/customer";
 				}
 				})
 				.catch((error) => {

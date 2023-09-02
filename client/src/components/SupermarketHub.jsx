@@ -3,39 +3,48 @@ import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
 function SupermarketHub() {
-
     return (
+        <div className='w-full h-screen text-center'>
+            <div className='flex flex-col mb-10'>
+                <ShoppingBagIcon className='mx-auto inline-block w-10 text-center py-10' />
 
-        <div className='container px-5 mx-auto text-center lg:px-40'>
-            <div className='flex flex-col w-full mb-10'>
-                <ShoppingBagIcon className='mx-auto inline-block w-10 py-10' />
                 <h1 className='sm:text-4xl text-3xl font-medium title-font font-display'>
                     Supermarket Program
                 </h1>
             </div>
 
-            <h1 className='text-2xl font-medium mb-10'>Choose your portal:</h1>
+            <h1 className='text-2xl font-medium mb-10'>Select your portal:</h1>
 
             {/*Buttons*/}
-            <div className='pb-5'>
-                <Link to='/login/supermarket'>
-                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
-                        Supermarket
-                    </button>
-                </Link>
-            </div>
+            <div className='grid sm:grid-cols-2 px-[30%] gap-16 pt-8 justify-center'>
+                <div className='shadow-md shadow-gray-600 rounded-md bg-[url("../public/supermarketStaff.jpg")]'>
+                    <h1 className='text-2xl text-white pt-[6%] font-bold pr-[55%] pb-[60%]'>
+                        Company
+                    </h1>
+                    <div className='pt-[20%] pl-[55%] pb-[10%]'>
+                        <Link to='/login/supermarket'>
+                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg'>
+                                Go <span className='ml-1'> ➤ </span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
 
-            <div>
-                <Link to='/login/customer'>
-                    <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded'>
+                <div className='shadow-md shadow-gray-600 rounded-md bg-[url("../public/customer.jpg")]'>
+                    <h1 className='text-2xl text-white pt-[6%] font-bold pr-[55%] pb-[60%]'>
                         Customer
-                    </button>
-                </Link>
+                    </h1>
+                    <div className='pt-[20%] pl-[55%] pb-[10%]'>
+                        <Link to='/login/customer'>
+                            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg'>
+                                Go <span className='ml-1'> ➤ </span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
-            
     );
-
 }
 
 export default SupermarketHub;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpenIcon, ChevronDoubleDownIcon, ShoppingCartIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
+import { BookOpenIcon, ChevronDoubleDownIcon, ShoppingCartIcon, ArrowPathIcon} from '@heroicons/react/24/outline';
 import { HashLink } from 'react-router-hash-link';
 import FadeInText from './FadeInText';
 
@@ -76,7 +76,7 @@ function Main() {
             <div id="our-recycling-program" className='container px-5 pt-16 mx-auto text-center lg:px-40 pb-80'>
                 <FadeInText>
                     <div className='flex flex-col w-full mb-40'>
-                        <WrenchScrewdriverIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
+                        <ArrowPathIcon className='mx-auto inline-block w-10 mt-40 text-green-700' />
                         <h1 className='sm:text-4xl font-medium title-font mb-4 text-green-800 py-3 font-display'>
                             Our Recycling Program
                         </h1>

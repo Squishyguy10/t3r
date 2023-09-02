@@ -37,7 +37,7 @@ function NavBar() {
                     </a>
                 </div>
                 <nav className='text-xl'>
-                    <a href='/supermarket-hub' className='hover:text-green-300 ml-8'>
+                    <a href='/recycling-hub' className='hover:text-green-300 ml-8'>
                         Recycling Program
                     </a>
                 </nav>

@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import Main from './components/Main';
 import SupermarketHub from './components/SupermarketHub';
+import RecyclingHub from './components/RecyclingHub';
 import Login from './components/Login';
 import BottomBar from './components/BottomBar'
 import SupermarketSignup from './components/SupermarketSignup';
@@ -30,6 +31,10 @@ function App() {
 
           <Route exact path='/supermarket-hub'>
             <SupermarketHub />
+          </Route>
+
+          <Route exact path='/recycling-hub'>
+            <RecyclingHub />
           </Route>
 
           <Route exact path='/login/supermarket'>

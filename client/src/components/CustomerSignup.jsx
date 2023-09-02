@@ -85,9 +85,9 @@ class CustomerSignup extends Component {
 
 
     handleSubmit = (e) => {
-        //alert(this.state.username + ' ' + this.state.password);
+        alert(this.state.username + ' ' + this.state.password);
 		
-        const user = {this.state.email, this.state.username, this.state.password, this.state.location, "customer", null};
+        const user = [this.state.email, this.state.username, this.state.password, this.state.location, "customer", null];
 		fetch('http://localhost:3001/signup', {
 			method: 'POST',
 			headers: {

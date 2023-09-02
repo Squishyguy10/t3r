@@ -13,7 +13,7 @@ mongoose.set('strictQuery', false);
 const supermarketSchema = new mongoose.Schema({
 	username: String,
 	name: String,
-	coordinates: [Number, Number],
+	coordinates: {lat: Number, lng: Number},
 	inventory: [
 		{
 			name: String,
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 	email: String,
 	username: String,
 	password: String,
-	coordinates: [Number, Number],
+	coordinates: {lat: Number, lng: Number},
 	type: String,
 });
 const User = mongoose.model('User', userSchema);
@@ -42,7 +42,9 @@ app.use(cors());
 
 
 app.post('/signup', async (req, res) => {
-	const {email, username, password, coordinates, type, name} = req.body;
+	console.log(req.body);
+	const [email, username, password, coordinates, type, name] = req.body;
+	console.log(email);
 	
 	const existingUser = await User.findOne({$or: [{username}, {email}]});
 	

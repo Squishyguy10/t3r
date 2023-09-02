@@ -205,7 +205,7 @@ class SupermarketSignup extends Component {
                         <pre>{JSON.stringify(this.state.location)}</pre>
                     </div>
                     <div className='space-x-3'>
-                        <Link to={'/login/customer'}>
+                        <Link to={'/login/supermarket'}>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold px-4 border border-red-700 rounded'>
                                 Go Back
                             </button>

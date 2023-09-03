@@ -84,7 +84,7 @@ We used MongoDB Atlas for storing all of our data. Within this database we have 
 
 Throughout the entire hackathon we have been committing, pushing, and pulling from GitHub. We divided the workload between the four of us, and it was essential that we constantly gave each other our changes so we could work with each other accordingly. We made use of the push descriptions and each of our pushes were meaningful with a reason behind them. We have made over 200 commits throughout the hacking period.
 
-On top of that, we also utilized GitHub pages as a way to host our website. We deployed our website there so that anyone is able to view our project easily, without having to install all the dependencies and download all the files natively.
+On top of that, we also utilized GitHub pages as a way to host our website. We deployed our website there so that anyone is able to view our project easily, without having to install all the dependencies and download all the files natively. Our website is deployed [here](https://qualya.github.io/).
 
 ***
 

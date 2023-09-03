@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/t3r/static/css/main.37470cc2.css",
+    "main.js": "/t3r/static/js/main.2abac0bd.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/t3r/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/fruitbg.png": "/t3r/static/media/fruitbg.43d7b90c1ede920fa4a7.png",
+    "static/media/naturebg.jpg": "/t3r/static/media/naturebg.a947f1a97928bfd77714.jpg",
+    "static/media/vinebg.png": "/t3r/static/media/vinebg.227a5ec9b3a70ff46a4d.png",
+    "static/media/recycle.png": "/t3r/static/media/recycle.81cc37d1cf024638e5b1.png",
+    "static/media/customer.jpg": "/t3r/static/media/customer.cdd2f4460ebf9ceb0927.jpg",
+    "static/media/question.jpg": "/t3r/static/media/question.8640a9896b94f24b2c9b.jpg",
+    "static/media/supermarketStaff.jpg": "/t3r/static/media/supermarketStaff.0b61f53bd26d1445d0ce.jpg",
+    "index.html": "/t3r/index.html",
+    "main.37470cc2.css.map": "/t3r/static/css/main.37470cc2.css.map",
+    "main.2abac0bd.js.map": "/t3r/static/js/main.2abac0bd.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/t3r/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37470cc2.css",
+    "static/js/main.2abac0bd.js"
+  ]
+}

@@ -14,40 +14,40 @@ class SupermarketCatalogue extends Component {
 		
 		this.handleStoreChange = this.handleStoreChange.bind(this);
 		this.handleSearchChange = this.handleSearchChange.bind(this);
-		
-		
+
+
 		if (!SupermarketCatalogue.executeSecond) {
 			SupermarketCatalogue.executeSecond = true;
 		}
 		else if (SupermarketCatalogue.executeSecond) {
 			fetch('http://localhost:3001/supermarkets')
-			.then((response) => response.json())
-			.then((supermarkets) => {
-				const storeNames = [];
-				const itemDetails = [];
+				.then((response) => response.json())
+				.then((supermarkets) => {
+					const storeNames = [];
+					const itemDetails = [];
 
-				supermarkets.forEach((supermarket) => {
-					const storeName = supermarket.name;
-					storeNames.push(storeName);
+					supermarkets.forEach((supermarket) => {
+						const storeName = supermarket.name;
+						storeNames.push(storeName);
 
-					supermarket.inventory.forEach((item) => {
-						itemDetails.push({
-							store: storeName,
-							name: item.name,
-							price: item.price,
-							expiry: item.expiry,
-							quantity: item.quantity,
+						supermarket.inventory.forEach((item) => {
+							itemDetails.push({
+								store: storeName,
+								name: item.name,
+								price: item.price,
+								expiry: item.expiry,
+								quantity: item.quantity,
+							});
 						});
 					});
+					console.log('Store Names:', storeNames);
+					this.setState({ stores: storeNames });
+					console.log('Item Details:', itemDetails);
+					this.setState({ products: itemDetails });
+				})
+				.catch((error) => {
+					console.error('Error retrieving supermarkets:', error);
 				});
-				console.log('Store Names:', storeNames);
-				this.setState({stores: storeNames});
-				console.log('Item Details:', itemDetails);
-				this.setState({products: itemDetails});
-			})
-			.catch((error) => {
-				console.error('Error retrieving supermarkets:', error);
-			});
 		}
 	}
 
@@ -64,9 +64,7 @@ class SupermarketCatalogue extends Component {
 	render() {
 		const { products, selectedStore, searchQuery } = this.state;
 
-
 		const filteredByStore = selectedStore === '' ? products : products.filter((product) => product.store === selectedStore);
-
 
 		const filteredProducts = filteredByStore.filter((product) =>
 			product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -112,43 +110,43 @@ class SupermarketCatalogue extends Component {
 					</Link>
 				</div>
 				<div className='flex justify-center'>
-					<table cellPadding='50'>
+					<table className='table-auto w-full mt-10'>
 						<thead>
-							<tr className='text-xl'>
-								<th>Store</th>
-								<th>Item</th>
-								<th>Expires</th>
-								<th>Price</th>
-								<th>Quantity</th>
+							<tr className='text-xl bg-green-200 border-t border-l border-r b-1 rounded-lg border-green-800'>
+								<th className='py-2 px-4 border-x border-green-800'>Store</th>
+								<th className='py-2 px-4 border-x border-green-800'>Item</th>
+								<th className='py-2 px-4 border-x border-green-800'>Expires</th>
+								<th className='py-2 px-4 border-x border-green-800'>Price</th>
+								<th className='py-2 px-4 border-x border-green-800'>Quantity</th>
 							</tr>
 						</thead>
-						{filteredProducts.map((product, index) => (
-							<tbody className='text-lg' key={index}>
-								<tr className='border-t-2 border-solid border-black'>
-									<td>{product.store}</td>
-									<td>{product.name}</td>
-									<td>
+						<tbody>
+							{filteredProducts.map((product, index) => (
+								<tr key={index} className={index % 2 === 0 ? 'bg-green-100' : 'bg-white'}>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.store}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.name}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>
 										{(() => {
-										const expiryDate = new Date(product.expiry);
-										const currentDate = new Date();
+											const expiryDate = new Date(product.expiry);
+											const currentDate = new Date();
 
-										const timeDifference = expiryDate - currentDate;
-										const daysDifference = Math.floor(timeDifference / (1000*60*60*24));
+											const timeDifference = expiryDate - currentDate;
+											const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
-										if (daysDifference > 0) {
-											return `In ${daysDifference} ${daysDifference === 1 ? 'day' : 'days'}`;
-										} else if (daysDifference < 0) {
-											return `${-daysDifference} ${-daysDifference === 1 ? 'day' : 'days'} ago`;
-										} else {
-											return 'Today';
-										}
+											if (daysDifference > 0) {
+												return `In ${daysDifference} ${daysDifference === 1 ? 'day' : 'days'}`;
+											} else if (daysDifference < 0) {
+												return `${-daysDifference} ${-daysDifference === 1 ? 'day' : 'days'} ago`;
+											} else {
+												return 'Today';
+											}
 										})()}
 									</td>
-									<td>${product.price.toFixed(2)}</td>
-									<td>{product.quantity}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>${product.price.toFixed(2)}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.quantity}</td>
 								</tr>
-							</tbody>
-						))}
+							))}
+						</tbody>
 					</table>
 				</div>
 			</div>

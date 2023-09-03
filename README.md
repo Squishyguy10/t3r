@@ -25,7 +25,7 @@ The recycling program provides users with a quick survey to fill out. They fill 
 
 ### Supermarket Program :shopping_cart:
 
-Roughly *1 billion metric tonnes* of food is thrown out every single year. A big portion of that waste comes from supermarkets alone. Moreover, a lot of that food is in perfectly good condition and does not have to be thrown out. Every day, supermarkets have to throw out *hundreds* of kilograms if not *tonnes* of food that goes bad. It is needless to say that this is a major roadblock towards our goals for achieving sustainability, as wasting food not only prevents many from being fed, but also increases demand for food production, which leads to more greenhouse gas emissions. We recognize that this is a problem that can definitely be solved with some effort, and part of our app aims to solve this exact problem.
+Some *billion* tonnes of food is thrown out every single year. A big portion of that waste comes from supermarkets alone. Moreover, a lot of that food is in perfectly good condition and does not have to be thrown out. Every day, supermarkets have to throw out *hundreds* of kilograms if not *tonnes* of food that goes bad. It is needless to say that this is a major roadblock towards our goals for achieving sustainability, as wasting food not only prevents many from being fed, but also increases demand for food production, which leads to more greenhouse gas emissions. We recognize that this is a problem that can definitely be solved with some effort, and part of our app aims to solve this exact problem.
 
 ####  Supermarkets :convenience_store:
 

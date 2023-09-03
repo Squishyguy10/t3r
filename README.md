@@ -70,13 +70,13 @@ We made use of many of Tailwind's features to style all of the aspects of our we
 
 ### Node.js
 
-
+We used Node.JS for the back-end server. This facilitates all connections between the server and client including customer and supermarket sign-in and sign-up, survey submission, and GPT survey response generation. The server is also used to hide our API keys and Mongo database password from the client. For example, in dealing with the Google Maps API, the server acts as a proxy, where the client requests /proxy-gmaps on the server instead of directly calling the Google Maps API, meaning it never directly interacts with our API key.
 
 ***
 
 ### MongoDB Atlas
 
-
+We used MongoDB Atlas for storing all of our data. Within this database we have two collections, `supermarkets` and `users`. `supermarkets` contains all data for stores, the admin username used to log in and add items, the name of the store, the coordinates of the store to help users find how far the store is from them, and all inventory data which contains the name of the item, the quantity, price, and expiration date. `users` contains all account information, both customer and store admin accounts. Each entry contains the username, email address, coordinates of general location to help find nearby stores, the type of account (customer or supermarket), and the SHA-256 hashed password to verify logins.
 
 ***
 
@@ -98,7 +98,7 @@ Node package manager was essential for us, as this is where we got all of our re
 
 Google Maps API was essential to the functioning of our program. We used it in multiple places. One of the places we used it in was in the Supermarket Program, during the customer/supermarket signups. Each account would have a location tied to it and we used Google Maps API to let the user fill out their location and select the most appropriate one from the Google Maps search results. 
 
-Furthermore, we used Google Maps API for the Recycling Program. When users submit their survey, the program sends a request to query for recycling/donating facilities near the user. It will then display the map with the nearby facilities pinned.
+Furthermore, we used the Google Maps API for the Recycling Program. When users submit their survey, the program sends a request to query for recycling/donating facilities near the user. It will then display the map with the nearby facilities pinned.
 
 ***
 

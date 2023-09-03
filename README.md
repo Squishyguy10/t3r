@@ -128,9 +128,9 @@ Within `client`, you can see the following (and other files):
     ├── index.css
     ├── index.js
     └── components
-	├── BottomBar.jsx
         ├── Main.jsx
         ├── NavBar.jsx
+        ...
 ```
 
 `index.js` is the entry point of the React app and it contains the component `App.jsx`. Our `components` folder stores all of the components that we made. The above snippet shows just a couple of them: `Main.jsx` and `NavBar.jsx`. All of these components are placed in `App.jsx`, and use `react-router-dom` to be put on different pages of the website.

@@ -43,19 +43,17 @@ class Recommendations extends Component {
 				.catch((error) => {
 					console.error('Error:', error);
 				});
-		}
-	}
-
-	componentDidMount() {
-
-		loadGoogleMapsAPI()
+			
+			loadGoogleMapsAPI()
 			.then((maps) => {
-				this.setState({ googleMaps: maps });
+				this.setState({googleMaps: maps});
 			})
 			.catch((error) => {
 				console.error('Error loading Google Maps API:', error);
 			});
+		}
 	}
+
 
 	handleSelect = async (selectedAddress) => {
 		try {

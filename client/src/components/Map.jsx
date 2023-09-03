@@ -15,18 +15,23 @@ class Map extends Component {
     }
 
     componentDidMount() {
-
-        if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
-            loadGoogleMapsAPI()
-				.then((maps) => {
-					this.setState({ googleMaps: maps });
-				})
-				.catch((error) => {
-					console.error('Error loading Google Maps API:', error);
-				});
-        } else {
-            this.searchRecyclingLocations();
-        }
+		if (!Map.executeSecond) {
+			Map.executeSecond = true;
+		}
+		else if (Map.executeSecond) {
+			if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
+				loadGoogleMapsAPI()
+					.then((maps) => {
+						this.setState({googleMaps: maps});
+					})
+					.catch((error) => {
+						console.error('Error loading Google Maps API:', error);
+					});
+			}
+			else {
+				this.searchRecyclingLocations();
+			}
+		}
     }
 
     searchRecyclingLocations = () => {

@@ -26,17 +26,19 @@ class CustomerSignup extends Component {
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePlaceChange = this.handlePlaceChange.bind(this);
-    }
-
-    componentDidMount() {
-
-        loadGoogleMapsAPI()
-			.then((maps) => {
-				this.setState({ googleMaps: maps });
-			})
-			.catch((error) => {
-				console.error('Error loading Google Maps API:', error);
-			});
+		
+		if (!CustomerSignup.executeSecond) {
+			CustomerSignup.executeSecond = true;
+		}
+		else if (CustomerSignup.executeSecond) {
+			loadGoogleMapsAPI()
+				.then((maps) => {
+					this.setState({googleMaps: maps});
+				})
+				.catch((error) => {
+					console.error('Error loading Google Maps API:', error);
+				});
+		}
     }
 
     handlePlaceChange = (e) => {

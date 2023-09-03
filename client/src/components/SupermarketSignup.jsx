@@ -28,16 +28,19 @@ class SupermarketSignup extends Component {
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePlaceChange = this.handlePlaceChange.bind(this);
-    }
-
-    componentDidMount() {
-        loadGoogleMapsAPI()
-			.then((maps) => {
-				this.setState({ googleMaps: maps });
-			})
-			.catch((error) => {
-				console.error('Error loading Google Maps API:', error);
-			});
+		
+		if (!SupermarketSignup.executeSecond) {
+			SupermarketSignup.executeSecond = true;
+		}
+		else if (SupermarketSignup.executeSecond) {
+			loadGoogleMapsAPI()
+				.then((maps) => {
+					this.setState({googleMaps: maps});
+				})
+				.catch((error) => {
+					console.error('Error loading Google Maps API:', error);
+				});
+		}
     }
 
     handlePlaceChange = (e) => {

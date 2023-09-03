@@ -124,7 +124,7 @@ Within `client`, you can see the following (and other files):
 ```
 ├── public
 └── src
-├── App.jsx
+   ├── App.jsx
     ├── index.css
     ├── index.js
     └── components

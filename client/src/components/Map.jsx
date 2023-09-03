@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { loadGoogleMapsAPI } from './google-maps-api';
 
 class Map extends Component {
     constructor(props) {
@@ -16,19 +17,17 @@ class Map extends Component {
     componentDidMount() {
 
         if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
-            this.loadGoogleMapsAPI();
+            loadGoogleMapsAPI()
+				.then((maps) => {
+					this.setState({ googleMaps: maps });
+				})
+				.catch((error) => {
+					console.error('Error loading Google Maps API:', error);
+				});
         } else {
             this.searchRecyclingLocations();
         }
     }
-
-    loadGoogleMapsAPI = () => {
-        const script = document.createElement('script');
-        script.src = 'http://localhost:3001/proxy-gmaps';
-        script.async = true;
-        document.head.appendChild(script);
-        script.onload = this.searchRecyclingLocations;
-    };
 
     searchRecyclingLocations = () => {
         const center = { lat: this.state.lat, lng: this.state.lng }; 

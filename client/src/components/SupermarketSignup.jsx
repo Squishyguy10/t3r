@@ -32,12 +32,12 @@ class SupermarketSignup extends Component {
 
     componentDidMount() {
         loadGoogleMapsAPI()
-        .then((maps) => {
-            this.setState({ googleMaps: maps });
-        })
-        .catch((error) => {
-            console.error('Error loading Google Maps API:', error);
-        });
+			.then((maps) => {
+				this.setState({ googleMaps: maps });
+			})
+			.catch((error) => {
+				console.error('Error loading Google Maps API:', error);
+			});
     }
 
     handlePlaceChange = (e) => {

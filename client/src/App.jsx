@@ -4,7 +4,6 @@ import Main from './components/Main';
 import SupermarketHub from './components/SupermarketHub';
 import RecyclingHub from './components/RecyclingHub';
 import Login from './components/Login';
-import BottomBar from './components/BottomBar'
 import SupermarketSignup from './components/SupermarketSignup';
 import CustomerSignup from './components/CustomerSignup';
 import SupermarketCatalogue from './components/SupermarketCatalogue';
@@ -95,7 +94,7 @@ function App() {
         </Switch>
       </Router>
 
-      <BottomBar />
+
     </div>
   );
 }

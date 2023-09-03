@@ -124,11 +124,11 @@ Within `client`, you can see the following (and other files):
 ```
 ├── public
 └── src
-	├── App.jsx
+├── App.jsx
     ├── index.css
     ├── index.js
     └── components
-	    ├── BottomBar.jsx
+	├── BottomBar.jsx
         ├── Main.jsx
         ├── NavBar.jsx
 ```

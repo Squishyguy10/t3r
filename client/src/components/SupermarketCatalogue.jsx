@@ -144,7 +144,7 @@ class SupermarketCatalogue extends Component {
 										}
 										})()}
 									</td>
-									<td>{product.price.toFixed(2)}</td>
+									<td>${product.price.toFixed(2)}</td>
 									<td>{product.quantity}</td>
 								</tr>
 							</tbody>

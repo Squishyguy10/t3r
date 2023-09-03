@@ -178,23 +178,23 @@ class CustomerCatalogue extends Component {
 				<div className='flex justify-center'>
 					<table cellPadding='50'>
 						<thead>
-							<tr className='text-xl'>
-								<th>Store</th>
-								<th>Item</th>
-								<th>Expires</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Add to Cart</th>
-								<th>Selected Quantity</th>
-								<th>Remove</th>
+							<tr className='text-xl bg-green-200 border-t border-l border-r b-1 rounded-lg border-green-800'>
+								<th className='py-2 px-4 border-x border-green-800'>Store</th>
+								<th className='py-2 px-4 border-x border-green-800'>Item</th>
+								<th className='py-2 px-4 border-x border-green-800'>Expires</th>
+								<th className='py-2 px-4 border-x border-green-800'>Price</th>
+								<th className='py-2 px-4 border-x border-green-800'>Quantity</th>
+								<th className='py-2 px-4 border-x border-green-800'>Add to Cart</th>
+								<th className='py-2 px-4 border-x border-green-800'>Selected Quantity</th>
+								<th className='py-2 px-4 border-x border-green-800'>Remove</th>
 							</tr>
 						</thead>
 						{filteredProducts.map((product, index) => (
 							<tbody className='text-lg' key={index}>
-								<tr className='border-t-2 border-solid border-black'>
-									<td>{product.store}</td>
-									<td>{product.name}</td>
-									<td>
+								<tr key={index} className={index % 2 === 0 ? 'bg-green-100' : 'bg-white'}>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.store}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.name}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>
 										{(() => {
 										const expiryDate = new Date(product.expiry);
 										const currentDate = new Date();
@@ -211,9 +211,9 @@ class CustomerCatalogue extends Component {
 										}
 										})()}
 									</td>
-									<td>${product.price.toFixed(2)}</td>
-									<td>{product.quantity}</td>
-									<td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>${product.price.toFixed(2)}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>{product.quantity}</td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>
 										<button
 											onClick={() => this.addToCart(product)}
 											className='bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-1 rounded'
@@ -221,7 +221,7 @@ class CustomerCatalogue extends Component {
 											Add to Cart
 										</button>
 									</td>
-									<td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>
 										<input
 											type='number'
 											min='0'
@@ -233,7 +233,7 @@ class CustomerCatalogue extends Component {
 											}
 										/>
 									</td>
-									<td>
+									<td className={((index === filteredProducts.length - 1) ? ' border-b border-green-800 ' : '') + 'py-2 px-4 border-x border-green-800'}>
 										<button
 											onClick={() => this.removeItemFromCart(product.index)}
 											className='bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 rounded'
@@ -247,7 +247,7 @@ class CustomerCatalogue extends Component {
 					</table>
 				</div>
 				<div className='flex justify-center mt-4'>
-					<h1 className='text-4xl pb-10 font-display font-bold'>Cart</h1>
+					<h1 className='text-4xl pb-10 font-display font-bold mt-10'>Cart</h1>
 				</div>
 				<div className='flex justify-center'>
 					<table cellPadding='20'>

@@ -10,7 +10,7 @@ function Main() {
                 <div className='h-screen bg-black/50'>
                     <div className='opacity-100 container px-5 pt-24 pb-10 mx-auto text-center lg:px-40'>
                         <h1 className='text-8xl pb-10 font-display text-green-400 font-bold'>
-                            THE 3 R'S
+                            THE 3 Rs
                         </h1>
                         <h1 className='text-5xl pt-24 font-inter text-white'>
                             MAKING THE PLANET BETT3R

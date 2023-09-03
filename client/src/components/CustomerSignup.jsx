@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { Link } from 'react-router-dom';
 import { loadGoogleMapsAPI } from './google-maps-api';
-import Key from './google-maps-api-key';
 
 class CustomerSignup extends Component {
     constructor(props) {
@@ -31,7 +30,7 @@ class CustomerSignup extends Component {
 
     componentDidMount() {
 
-        loadGoogleMapsAPI(Key())
+        loadGoogleMapsAPI()
         .then((maps) => {
             this.setState({ googleMaps: maps });
         })

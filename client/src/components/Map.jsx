@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Key from './google-maps-api-key';
 
 class Map extends Component {
     constructor(props) {
@@ -25,7 +24,7 @@ class Map extends Component {
 
     loadGoogleMapsAPI = () => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${Key()}&libraries=places&callback=initMap`;
+        script.src = 'http://localhost:3001/proxy-gmaps';
         script.async = true;
         document.head.appendChild(script);
         script.onload = this.searchRecyclingLocations;

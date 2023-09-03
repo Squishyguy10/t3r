@@ -64,7 +64,7 @@ On top of the libraries, we made use of built in React features like the `state`
 
 ### Tailwind CSS
 
-We made use of many of Tailwind's features to style all of the aspects of our website to create a user friendly and appealing aesthetic. Examples of what we used it for are text, backgrounds, positioning of elements etc.
+We made use of many of Tailwind's features to style all of the aspects of our website to create a user friendly and appealing aesthetic. Examples of what we used it for are text, backgrounds, positioning of elements, etc.
 
 ***
 

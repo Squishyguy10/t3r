@@ -7,7 +7,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const uri = process.env.URI;
 if (!uri) {
-	console.log("The MongoDB Atlas URI is missing from the environment variables. Add URI=your uri here to the .env file on an empty line.");
+	console.error("The MongoDB Atlas URI is missing from the environment variables. Add URI=your uri here to the .env file on an empty line.");
+	process.exit();
+}
+const GMapsKey = process.env.GMAPS_API_KEY;
+if (!GMapsKey) {
+	console.error("The Google Maps API key is missing from the environment variables. Add GMAPS_API_KEY=your key here to the .env file on an empty line.");
 	process.exit();
 }
 
@@ -164,7 +169,7 @@ app.post('/submit_survey', (req, res) => {
 
 async function aiGenResults(aiprompt) {
 	try {
-		const oaiRequest = new OpenAI({ apiKey: OpenAIKey, dangerouslyAllowBrowser: true });
+		const oaiRequest = new OpenAI({apiKey: OpenAIKey, dangerouslyAllowBrowser: true});
 		const airesponse = await oaiRequest.chat.completions.create({
 			model: 'gpt-3.5-turbo',
 			messages: [{'role': 'user', 'content': aiprompt}],
@@ -215,6 +220,27 @@ app.post('/get_survey_results', async (req, res) => {
 		else {
 			res.status(500).json({error: 'Failed to generate recommendations'});
 		}
+	}
+});
+
+
+app.get('/proxy-gmaps', async (req, res) => {
+	try {
+		const scriptURL = 'https://maps.googleapis.com/maps/api/js?key=' + GMapsKey + '&libraries=places&callback=initMap';
+		const scriptResponse = await fetch(scriptURL);
+
+		if (scriptResponse.ok) {
+			const scriptText = await scriptResponse.text();
+			res.set('Content-Type', 'application/javascript');
+			res.send(scriptText);
+		}
+		else {
+			res.status(500).json({ error: 'Failed to fetch the script' });
+		}
+	}
+	catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'An error occurred' });
 	}
 });
 

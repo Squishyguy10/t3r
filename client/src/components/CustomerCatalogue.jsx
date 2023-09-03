@@ -211,7 +211,7 @@ class CustomerCatalogue extends Component {
 										}
 										})()}
 									</td>
-									<td>${product.price}</td>
+									<td>${product.price.toFixed(2)}</td>
 									<td>{product.quantity}</td>
 									<td>
 										<button

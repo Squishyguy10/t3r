@@ -235,12 +235,12 @@ app.get('/proxy-gmaps', async (req, res) => {
 			res.send(scriptText);
 		}
 		else {
-			res.status(500).json({ error: 'Failed to fetch the script' });
+			res.status(500).json({error: 'Failed to fetch the script'});
 		}
 	}
 	catch (error) {
 		console.error(error);
-		res.status(500).json({ error: 'An error occurred' });
+		res.status(500).json({error: 'An error occurred'});
 	}
 });
 

@@ -11,6 +11,7 @@ class SupermarketCatalogue extends Component {
 			searchQuery: '',
 			type: '',
 		};
+		
 		this.handleStoreChange = this.handleStoreChange.bind(this);
 		this.handleSearchChange = this.handleSearchChange.bind(this);
 		
@@ -143,7 +144,7 @@ class SupermarketCatalogue extends Component {
 										}
 										})()}
 									</td>
-									<td>{product.price}</td>
+									<td>{product.price.toFixed(2)}</td>
 									<td>{product.quantity}</td>
 								</tr>
 							</tbody>

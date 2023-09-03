@@ -161,6 +161,8 @@ Also, we struggled a little bit with MongoDB Atlas as well, since this was our f
 
 Another struggle we faced was displaying the item catalogue to the user, where they would be able to add items to a shopping cart. In specific, we did not know how to limit a user from adding more items than there were in stock to their cart, but through reading resources on the internet and watching YouTube videos, we were able to create our own implementation of a cart system. 
 
+The largest struggle, however, had to do with the Google Map API. The maps never seemed to load in, and would instead give us floods of errors, leaving us stuck. Of course, eventually, we got it to work, but that was all after hours of time we spent testing, watching tutorials, and testing some more. 
+
 <br><br>
 
 ## Accomplishments We Are Proud Of :trophy:
@@ -170,7 +172,7 @@ Making this app ourselves while learning throughout the journey, we have many th
 
 * Learning how to work so many great APIs such as:
    * *MongoDB* for storing and organizing all our user data
-   * *Google Maps* to help with location finding
+   * *Google Maps* to help with location finding and marking
    * *OpenAI* for helping to come up with responses to our recycling survey
 
 * Our overall improvements in our front-end and back-end skills
@@ -183,4 +185,4 @@ Making this app ourselves while learning throughout the journey, we have many th
 
 ## Future of T3R :globe_with_meridians:
 
-With all of our collective effort poured into this app, we hope to continue working on this app, improving it whenever we have the chance. We have many ideas we would like to implement: to name a few, we are planning on integrating _______________
+With all of our collective effort poured into this app, we hope to continue working on this app, improving it whenever we have the chance. We have many ideas we would like to implement: to name a few, we are planning on integrating a working payment system with a string encryption system so that user data will be as safe as can be. Similarily, we can encrypt user information (passwords, locations) for security reasons as well. Asides from encryption, changing the front-end for the cart system would improve the functionality and appearance. Lastly, we could add more survey questions for a more accurate evaluation and response, additionally adding some carbon footprint calculator for the user to truely understand how sustainable their lifestyle is. 

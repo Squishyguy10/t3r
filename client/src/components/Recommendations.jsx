@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { loadGoogleMapsAPI } from './google-maps-api';
 import { ListBulletIcon, MapPinIcon } from '@heroicons/react/24/outline';
-import Key from './google-maps-api-key';
 import Map from './Map';
 
 class Recommendations extends Component {
@@ -44,19 +43,17 @@ class Recommendations extends Component {
 				.catch((error) => {
 					console.error('Error:', error);
 				});
-		}
-	}
-
-	componentDidMount() {
-
-		loadGoogleMapsAPI(Key())
+			
+			loadGoogleMapsAPI()
 			.then((maps) => {
-				this.setState({ googleMaps: maps });
+				this.setState({googleMaps: maps});
 			})
 			.catch((error) => {
 				console.error('Error loading Google Maps API:', error);
 			});
+		}
 	}
+
 
 	handleSelect = async (selectedAddress) => {
 		try {

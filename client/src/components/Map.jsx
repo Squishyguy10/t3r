@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Key from './google-maps-api-key';
+import { loadGoogleMapsAPI } from './google-maps-api';
 
 class Map extends Component {
     constructor(props) {
@@ -15,21 +15,24 @@ class Map extends Component {
     }
 
     componentDidMount() {
-
-        if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
-            this.loadGoogleMapsAPI();
-        } else {
-            this.searchRecyclingLocations();
-        }
+		if (!Map.executeSecond) {
+			Map.executeSecond = true;
+		}
+		else if (Map.executeSecond) {
+			if (typeof window.google === 'undefined' || typeof window.google.maps === 'undefined') {
+				loadGoogleMapsAPI()
+					.then((maps) => {
+						this.setState({googleMaps: maps});
+					})
+					.catch((error) => {
+						console.error('Error loading Google Maps API:', error);
+					});
+			}
+			else {
+				this.searchRecyclingLocations();
+			}
+		}
     }
-
-    loadGoogleMapsAPI = () => {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${Key()}&libraries=places&callback=initMap`;
-        script.async = true;
-        document.head.appendChild(script);
-        script.onload = this.searchRecyclingLocations;
-    };
 
     searchRecyclingLocations = () => {
         const center = { lat: this.state.lat, lng: this.state.lng }; 

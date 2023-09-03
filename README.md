@@ -57,6 +57,8 @@ React was the main Javascript library we used to build our front-end. All of the
 * **SurveyJS**
 	* This library allowed us to build our survey for our recycling program
 * **Any API's React library**
+	* `react-google-maps/api`
+	* `openai`    
 
 On top of the libraries, we made use of built in React features like the `state` and `useState` hooks for class and functional components respectively, and we made use of `useEffect` and event listeners for certain cool effects on our website. 
 

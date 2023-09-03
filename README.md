@@ -165,7 +165,7 @@ The largest struggle, however, had to do with the Google Map API. The maps never
 
 <br><br>
 
-## Accomplishments We Are Proud Of :trophy:
+## Accomplishments That We're Proud Of :trophy:
 
 Making this app ourselves while learning throughout the journey, we have many things we are proud of. Here is a list of all our achievements we hold dear!
 * Planning and coming up with everything in our program by ourselves
@@ -180,6 +180,17 @@ Making this app ourselves while learning throughout the journey, we have many th
 	* And back-end with GPT, maps, and server setup
 
 * And of course, all our perserverence and hardwork we put in!
+
+<br><br>
+
+## What We Learned :books:
+
+Of course, this hackathon would not have been as fun if we hadn't tried anything new or learned anything, so let's talk about everything we learned!
+* Although we have worked with react and tailwind css before, we are still very new, so we learned a lot of new syntax and techniques. 
+
+* Like mentioned before, some of us never worked with APIs before, so learning the *MongoGB*, *Google Maps*, and *OpenAI* APIs taught us a lot, and would definitely help us in the future when working on other projects, or expanding this one.
+
+* We also learned how to implement certain features, such as a cart system and the survey. 
 
 <br><br>
 
